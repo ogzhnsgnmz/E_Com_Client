@@ -1,7 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
+import { AuthGuard } from './guards/common/auth.guard';
+import { HomeComponent } from './ui/components/home/home.component';
+import { LayoutComponent } from './admin/layout/layout.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:"admin", component: LayoutComponent, children:[
+      {path:"", component: DashboardComponent},
+      {path:"customer", loadChildren : () => import("./admin/components/customer/customer.module").then
+      (module => module.CustomerModule), canActivate:[AuthGuard]},
+      {path:"order", loadChildren : () => import("./admin/components/order/order.module").then
+      (module => module.OrderModule), canActivate:[AuthGuard]},
+      {path:"products", loadChildren : () => import("./admin/components/products/products.module").then
+      (module => module.ProductsModule), canActivate:[AuthGuard]},
+    ], canActivate:[AuthGuard]
+  },
+  {path:"", component : HomeComponent},
+  {path:"products", loadChildren : () => import("./ui/components/products/products.module").then
+  (module => module.ProductsModule)},
+  {path:"products/:pageNo", loadChildren : () => import("./ui/components/products/products.module").then
+  (module => module.ProductsModule)},
+  {path:"register", loadChildren : () => import("./ui/components/register/register.module").then
+  (module => module.RegisterModule)},
+  {path:"login", loadChildren : () => import("./ui/components/login/login.module").then
+  (module => module.LoginModule)},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

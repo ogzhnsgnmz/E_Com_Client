@@ -1,0 +1,15 @@
+<mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput #txtName>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Stock</mat-label>
+    <input matInput #txtStock>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput #txtPrice>
+</mat-form-field>
+<button mat-raised-button color="primary" class="btn" (click)="create(txtName, txtStock, txtPrice)">Ekle</button>
+
+<!--<app-file-upload [options]="fileUploadOptions"></app-file-upload>-->
