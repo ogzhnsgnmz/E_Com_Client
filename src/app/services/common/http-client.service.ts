@@ -65,4 +65,6 @@ export class RequestParamters{
   headers?: HttpHeaders;
   baseUrl?: string;
   fullEndPoint?: string;
+  
+  responseType?: string = 'json';
 }

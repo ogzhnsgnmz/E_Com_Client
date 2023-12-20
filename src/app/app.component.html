@@ -28,7 +28,7 @@
             <li class="nav-item">
               <a class="nav-link" (click)="signOut()" *ngIf="authService.isAuthenticated">Çıkış Yap</a>
             <li class="nav-item">
-                <button class="nav-link" (click)="loadComponent()" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Sepet</button>
+                <button class="nav-link" (click)="loadComponent()" href="#" data-bs-toggle="modal" data-bs-target="#basketModal">Sepet</button>
             </li>
           </ul>
       </div>
@@ -42,10 +42,9 @@
 <ngx-spinner size="default" name="s2" type="ball-scale-multiple"></ngx-spinner>
 <ngx-spinner size="default" name="s3" type="ball-spin-clockwise-fade-rotating"></ngx-spinner>
 
-<!--<app-baskets></app-baskets>-->
 
 <div class="modal fade" id="basketModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <ng-template appDynamicLoadComponent></ng-template>
   </div>
-</div>
+ </div>

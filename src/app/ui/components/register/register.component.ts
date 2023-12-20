@@ -26,30 +26,32 @@ export class RegisterComponent extends BaseComponent implements OnInit{
   ngOnInit(): void{
     this.frm = this.formBuilder.group({
       nameSurname: ["", [
-        Validators.required, 
-        Validators.maxLength(50), 
+        Validators.required,
+        Validators.maxLength(50),
         Validators.minLength(3)
       ]],
       username: ["", [
-        Validators.required, 
-        Validators.maxLength(50), 
+        Validators.required,
+        Validators.maxLength(50),
         Validators.minLength(3)
       ]],
       email: ["", [
-        Validators.required, 
-        Validators.maxLength(50), 
+        Validators.required,
+        Validators.maxLength(250),
         Validators.email
       ]],
-      password: ["", [
+      password: ["",
+      [
         Validators.required
       ]],
-      passwordConfirm: ["", [
+      passwordConfirm: ["",
+      [
         Validators.required
       ]]
     }, {
       validators: (group: AbstractControl): ValidationErrors | null => {
-        let sifre = group.get("password")?.value;
-        let sifreTekrar = group.get("passwordConfirm")?.value;
+        let sifre = group.get("password").value;
+        let sifreTekrar = group.get("passwordConfirm").value;
         return sifre === sifreTekrar ? null : { notSame: true };
       }
     });

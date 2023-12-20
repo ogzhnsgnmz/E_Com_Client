@@ -11,10 +11,14 @@ const routes: Routes = [
       {path:"", component: DashboardComponent},
       {path:"customer", loadChildren : () => import("./admin/components/customer/customer.module").then
       (module => module.CustomerModule), canActivate:[AuthGuard]},
-      {path:"order", loadChildren : () => import("./admin/components/order/order.module").then
+      {path:"orders", loadChildren : () => import("./admin/components/order/order.module").then
       (module => module.OrderModule), canActivate:[AuthGuard]},
       {path:"products", loadChildren : () => import("./admin/components/products/products.module").then
       (module => module.ProductsModule), canActivate:[AuthGuard]},
+      {path:"authorize-menu", loadChildren : () => import("./admin/components/authorize-menu/authorize-menu.module").then
+      (module => module.AuthorizeMenuModule), canActivate:[AuthGuard]},
+      { path: "roles", loadChildren: () => import("./admin/components/role/role.module").then(module => module.RoleModule), canActivate: [AuthGuard] },
+      { path: "users", loadChildren: () => import("./admin/components/user/user.module").then(module => module.UserModule), canActivate: [AuthGuard] },
     ], canActivate:[AuthGuard]
   },
   {path:"", component : HomeComponent},
@@ -26,6 +30,8 @@ const routes: Routes = [
   (module => module.RegisterModule)},
   {path:"login", loadChildren : () => import("./ui/components/login/login.module").then
   (module => module.LoginModule)},
+  { path: "password-reset", loadChildren: () => import("./ui/components/password-reset/password-reset.module").then(module => module.PasswordResetModule) },
+  { path: "update-password/:userId/:resetToken", loadChildren: () => import("./ui/components/update-password/update-password.module").then(module => module.UpdatePasswordModule) },
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsModule } from './products/products.module';
 import { CustomerModule } from './customer/customer.module';
+import { UserModule } from './user/user.module';
 
 
 
@@ -10,7 +11,8 @@ import { CustomerModule } from './customer/customer.module';
   imports: [
     CommonModule,
     ProductsModule,
-    CustomerModule
+    CustomerModule,
+    UserModule
   ]
 })
 export class ComponentsModule { }
