@@ -13,7 +13,7 @@ import { DeleteDirectiveModule } from 'src/app/directives/admin/delete.directive
 import { FileUploadModule } from 'src/app/services/common/file-upload/file-upload.module';
 import { DialogModule } from '@angular/cdk/dialog';
 import { CreateComponent } from './create/create.component';
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { CreateComponent } from './create/create.component';
     MatPaginatorModule,
     DeleteDirectiveModule,
     FileUploadModule,
-    DialogModule
+    DialogModule,
+    MatSelectModule
   ]
 })
 export class ProductsModule { }

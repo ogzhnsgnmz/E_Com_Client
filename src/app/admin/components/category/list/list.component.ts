@@ -3,10 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, Spinnertype } from 'src/app/base/base/base.component';
-import { List_Role } from 'src/app/contracts/role/List_Role';
+import { List_Category } from 'src/app/contracts/category/list_category';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { DialogService } from 'src/app/services/common/dialog.service';
-import { RoleService } from 'src/app/services/common/models/role.service';
+import { CategoryService } from 'src/app/services/common/models/category.service';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +16,7 @@ import { RoleService } from 'src/app/services/common/models/role.service';
 export class ListComponent extends BaseComponent implements OnInit {
 
   constructor(spinner: NgxSpinnerService,
-    private roleService: RoleService,
+    private categoryService: CategoryService,
     private alertifyService: AlertifyService,
     private dialogService: DialogService) {
     super(spinner)
@@ -24,26 +24,26 @@ export class ListComponent extends BaseComponent implements OnInit {
 
 
   displayedColumns: string[] = ['name', 'edit', 'delete'];
-  dataSource: MatTableDataSource<List_Role> = null;
+  dataSource: MatTableDataSource<List_Category> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  async getRoles() {
+  async getCategories() {
     this.ShowSpinner(Spinnertype.BallAtom);
-    const allRoles: { datas: List_Role[], totalCount: number } = await this.roleService.getRoles(this.paginator ? this.paginator.pageIndex : 0, this.paginator ? this.paginator.pageSize : 5, () => this.HideSpinner(Spinnertype.BallAtom), errorMessage => this.alertifyService.message(errorMessage, {
+    const allLists: { datas: List_Category[], totalCount: number } = await this.categoryService.getAllCategories(this.paginator ? this.paginator.pageIndex : 0, this.paginator ? this.paginator.pageSize : 5, () => this.HideSpinner(Spinnertype.BallAtom), errorMessage => this.alertifyService.message(errorMessage, {
       dismissOthers: true,
       messageType: MessageType.Error,
       position: Position.TopRight
     }))
 
-    this.dataSource = new MatTableDataSource<List_Role>(allRoles.datas);
-    this.paginator.length = allRoles.totalCount;
+    this.dataSource = new MatTableDataSource<List_Category>(allLists.datas);
+    this.paginator.length = allLists.totalCount;
   }
 
   async pageChanged() {
-    await this.getRoles();
+    await this.getCategories();
   }
 
   async ngOnInit() {
-    await this.getRoles();
+    await this.getCategories();
   }
 }

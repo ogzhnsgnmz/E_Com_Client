@@ -1,31 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Observable, firstValueFrom } from 'rxjs';
 import { HttpClientService } from '../http-client.service';
-import { List_Category } from 'src/app/contracts/category/list_category';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class SizeService {
 
   constructor(private httpClientService: HttpClientService) { }
 
-  async getAllCategories(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<any> {
+  async getSizes(page: number, size: number, successCallBack?: () => void, errorCallBack?: (error) => void) {
     const observable: Observable<any> = this.httpClientService.get({
-      controller: "categories",
+      controller: "sizes",
       queryString: `page=${page}&size=${size}`
     });
 
     const promiseData = firstValueFrom(observable);
-    promiseData.then(value => successCallBack())
-      .catch(error => errorCallBack(error));
+    promiseData.then(successCallBack)
+      .catch(errorCallBack);
 
     return await promiseData;
   }
 
   async create(name: string, successCallBack?: () => void, errorCallBack?: (error) => void) {
     const observable: Observable<any> = this.httpClientService.post({
-      controller: "categories"
+      controller: "sizes"
     }, { name: name });
 
     const promiseData = firstValueFrom(observable);

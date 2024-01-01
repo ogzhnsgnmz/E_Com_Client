@@ -16,6 +16,12 @@ const routes: Routes = [
       (module => module.OrderModule), canActivate:[AuthGuard]},
       {path:"products", loadChildren : () => import("./admin/components/products/products.module").then
       (module => module.ProductsModule), canActivate:[AuthGuard]},
+      {path:"categories", loadChildren : () => import("./admin/components/category/category.module").then
+      (module => module.CategoryModule), canActivate:[AuthGuard]},
+      {path:"brands", loadChildren : () => import("./admin/components/brand/brand.module").then
+      (module => module.BrandModule), canActivate:[AuthGuard]},
+      {path:"sizes", loadChildren : () => import("./admin/components/size/size.module").then
+      (module => module.SizeModule), canActivate:[AuthGuard]},
       {path:"authorize-menu", loadChildren : () => import("./admin/components/authorize-menu/authorize-menu.module").then
       (module => module.AuthorizeMenuModule), canActivate:[AuthGuard]},
       { path: "roles", loadChildren: () => import("./admin/components/role/role.module").then(module => module.RoleModule), canActivate: [AuthGuard] },

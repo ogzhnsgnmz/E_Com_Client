@@ -53,7 +53,8 @@
                 "src/assets/js/plugins.js",
                 "src/assets/js/ajax-mail.js",
                 "src/assets/js/main.js",
-                "src/assets/js/switcher.js"
+                "src/assets/js/switcher.js",
+                "node_modules/alertifyjs/build/alertify.min.js"
             ]
           },
           "configurations": {
