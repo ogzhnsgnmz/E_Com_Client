@@ -1,0 +1,181 @@
+<div class="checkout-page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Checkout Login Coupon Accordion Start -->
+                <div class="checkoutaccordion" id="checkOutAccordion">
+                    <div class="card">
+                        <h3>Sepete geri dönmek isitiyor musunuz? <span data-toggle="collapse" data-target="#logInaccordion">Dönmek için tıklayın</span></h3>
+
+                        <div id="logInaccordion" class="collapse" data-parent="#checkOutAccordion">
+                            <div class="card-body">
+                                <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer, please proceed to the Billing &amp; Shipping section.</p>
+                                <div class="login-reg-form-wrap mt-20">
+                                    <div class="row">
+                                        <div class="col-lg-7 m-auto">
+                                            <form action="#" method="post">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="single-input-item">
+                                                            <input type="email" placeholder="Enter your Email" required />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="single-input-item">
+                                                            <input type="password" placeholder="Enter your Password" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="single-input-item">
+                                                    <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+                                                        <div class="remember-meta">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="rememberMe" required />
+                                                                <label class="custom-control-label" for="rememberMe">Remember Me</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <a href="#" class="forget-pwd">Forget Password?</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="single-input-item">
+                                                    <button class="check-btn sqr-btn">Login</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Checkout Login Coupon Accordion End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Checkout Billing Details -->
+            <div class="col-lg-9">
+                <div class="checkout-billing-details-wrap">
+                    <h2>Adres Bilgisi</h2>
+                    <div class="billing-form-wrap">
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="f_name" class="required">Ad</label>
+                                        <input type="text" id="f_name" placeholder="First Name" required />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="l_name" class="required">Soyad</label>
+                                        <input type="text" id="l_name" placeholder="Last Name" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="phone">Phone</label>
+                                        <input type="text" id="phone"  placeholder="Phone" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="town" class="required">İl</label>
+                                        <input type="text" id="town"  placeholder="" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="phone" class="required">İlçe</label>
+                                        <input type="text" id="phone"  placeholder="" required  />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="town" class="required">Mahalle</label>
+                                        <input type="text" id="town"  placeholder="" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="phone" class="required">Adres</label>
+                                        <input type="text" id="phone"  placeholder="" required  />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="town" class="required">Adres Başlığı</label>
+                                        <input type="text" id="town"  placeholder="" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary Details -->
+            <div class="col-lg-3">
+                <div class="order-summary-details mt-md-26 mt-sm-26">
+                    <div class="order-summary-content mb-sm-4">
+                        <div class="summary-footer-area">
+                            <button type="submit" class="check-btn sqr-btn">Siparişi Tamamla</button><br><br>
+                            <div class="order-payment-method custom-control custom-checkbox mb-14">
+                                <input type="checkbox" class="custom-control-input" id="terms" required />
+                                <label class="custom-control-label" for="terms">Ön Bilgilendirme Koşulları'nı ve Mesafeli Satış Sözleşmesi'ni okudum, onaylıyorum.</label>
+                            </div>
+                        </div>
+                        <!-- Order Summary Table -->
+                        <div class="order-summary-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2"><h4>Sipariş Özeti</h4></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            Ara Toplam<br>
+                                            Kdv<br>
+                                            Kargo
+                                        </td>
+                                        <td class="text-right">
+                                            <strong>{{ receivedData.totalPrice }}</strong><br>
+                                            <strong>{{ receivedData.totalPrice }}</strong><br>
+                                            <strong>{{ receivedData.totalPrice }}</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Toplam</td>
+                                        <td stlye="color:red" class="text-right"><strong>{{ receivedData.totalPrice }}</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- Order Payment Method -->
+                    </div>
+                    <div class="summary-footer-area">
+                        <button type="submit" class="check-btn sqr-btn btn-block">Siparişi Tamamla</button>
+                    </div><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

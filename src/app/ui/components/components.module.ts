@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { BasketsModule } from './baskets/baskets.module';
 import { PasswordResetModule } from './password-reset/password-reset.module';
 import { UpdatePasswordModule } from './update-password/update-password.module';
+import { AboutUsModule } from './about-us/about-us.module';
+import { HomeModule } from './home/home.module';
 
 
 
@@ -14,13 +15,14 @@ import { UpdatePasswordModule } from './update-password/update-password.module';
   declarations: [],
   imports: [
     CommonModule,
-    HomeModule,
     ProductsModule,
     LoginModule,
     RegisterModule,
     BasketsModule,
     PasswordResetModule,
-    UpdatePasswordModule
+    UpdatePasswordModule,
+    AboutUsModule,
+    HomeModule
   ],
   exports: [
     BasketsModule

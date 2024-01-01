@@ -10,6 +10,18 @@
     <mat-label>Price</mat-label>
     <input matInput #txtPrice>
 </mat-form-field>
-<button mat-raised-button color="primary" class="btn" (click)="create(txtName, txtStock, txtPrice)">Ekle</button>
+<mat-form-field appearance="fill">
+    <mat-label>Size</mat-label>
+    <input matInput #txtSize>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Brand</mat-label>
+    <input matInput #txtBrand>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <input matInput #txtCategory>
+</mat-form-field>
+<button mat-raised-button color="primary" class="btn" (click)="create(txtName, txtStock, txtPrice, txtSize, txtBrand, txtCategory)">Ekle</button>
 
 <!--<app-file-upload [options]="fileUploadOptions"></app-file-upload>-->

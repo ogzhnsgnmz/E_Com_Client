@@ -30,39 +30,37 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
                     messageType: TaostrMessageType.Warning,
                     position: ToastrPosition.TopRight
                   });
-                }else{
-                  this.toastrService.message("Bu işlemi yapmaya yetkiniz bulunmadı!", "Yetkisiz işlem!", {
-                    messageType: TaostrMessageType.Warning,
-                    position: ToastrPosition.TopRight
-                  });
                 }
               }
             }).then(data => {
-
+              this.toastrService.message("Bu işlemi yapmaya yetkiniz bulunmadı!", "Yetkisiz işlem!", {
+                messageType: TaostrMessageType.Warning,
+                position: ToastrPosition.TopRight
+              });
             });
             break;
           case HttpStatusCode.InternalServerError:
             this.toastrService.message("Sunucuya erişilmiyor!", "Sunucu hatası!", {
               messageType: TaostrMessageType.Warning,
-              position: ToastrPosition.BottomFullWidht
+              position: ToastrPosition.BottomRight
             });
             break;
           case HttpStatusCode.BadRequest:
             this.toastrService.message("Geçersiz istek yapıldı!", "Geçersiz istek!", {
               messageType: TaostrMessageType.Warning,
-              position: ToastrPosition.BottomFullWidht
+              position: ToastrPosition.BottomRight
             });
             break;
           case HttpStatusCode.NotFound:
             this.toastrService.message("Sayfa bulunamadı!", "Sayfa bulunamadı!", {
               messageType: TaostrMessageType.Warning,
-              position: ToastrPosition.BottomFullWidht
+              position: ToastrPosition.BottomRight
             });
             break;
           default:
             this.toastrService.message("Beklenmeyen bir hata meydana gelmiştir!", "Hata!", {
               messageType: TaostrMessageType.Warning,
-              position: ToastrPosition.BottomFullWidht
+              position: ToastrPosition.BottomRight
             });
             break;
         }

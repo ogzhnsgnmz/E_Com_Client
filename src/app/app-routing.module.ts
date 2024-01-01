@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { AuthGuard } from './guards/common/auth.guard';
 import { HomeComponent } from './ui/components/home/home.component';
-import { LayoutComponent } from './admin/layout/layout.component';
+import { LayoutComponent as adminLayoutComponent } from './admin/layout/layout.component';
+import { LayoutComponent as uiLayoutComponent } from './ui/layout/layout.component';
 
 const routes: Routes = [
   {
-    path:"admin", component: LayoutComponent, children:[
+    path:"admin", component: adminLayoutComponent, children:[
       {path:"", component: DashboardComponent},
       {path:"customer", loadChildren : () => import("./admin/components/customer/customer.module").then
       (module => module.CustomerModule), canActivate:[AuthGuard]},
@@ -22,16 +23,32 @@ const routes: Routes = [
     ], canActivate:[AuthGuard]
   },
   {path:"", component : HomeComponent},
+  {path:"checkout", loadChildren : () => import("./ui/components/checkout/checkout.module").then
+  (module => module.CheckoutModule)},
+  ,{
+    path:"", component: uiLayoutComponent, children:[
   {path:"products", loadChildren : () => import("./ui/components/products/products.module").then
   (module => module.ProductsModule)},
   {path:"products/:pageNo", loadChildren : () => import("./ui/components/products/products.module").then
   (module => module.ProductsModule)},
+  {path:"product-detail", loadChildren : () => import("./ui/components/product-detail/product-detail.module").then
+  (module => module.ProductDetailModule)},
+  {path:"basket", loadChildren : () => import("./ui/components/baskets/baskets.module").then
+  (module => module.BasketsModule)},
+  {path:"my-account", loadChildren : () => import("./ui/components/profile/profile.module").then
+  (module => module.ProfileModule)},
+  {path:"about-us", loadChildren : () => import("./ui/components/about-us/about-us.module").then
+  (module => module.AboutUsModule)},
+  {path:"contact-us", loadChildren : () => import("./ui/components/contact-us/contact-us.module").then
+  (module => module.ContactUsModule)},
   {path:"register", loadChildren : () => import("./ui/components/register/register.module").then
   (module => module.RegisterModule)},
   {path:"login", loadChildren : () => import("./ui/components/login/login.module").then
   (module => module.LoginModule)},
   { path: "password-reset", loadChildren: () => import("./ui/components/password-reset/password-reset.module").then(module => module.PasswordResetModule) },
   { path: "update-password/:userId/:resetToken", loadChildren: () => import("./ui/components/update-password/update-password.module").then(module => module.UpdatePasswordModule) },
+    ]
+  }
 ];
 
 @NgModule({

@@ -28,12 +28,15 @@ export class CreateComponent extends BaseComponent implements OnInit {
     accept: ".png, .jpg, .jpeg"
   }; 
 
-  create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement){
+  create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement, size: HTMLInputElement, brand: HTMLInputElement, category: HTMLInputElement){
     this.ShowSpinner(Spinnertype.BallAtom);
     const create_Product: Create_Product = new Create_Product();
     create_Product.name = name.value;
     create_Product.stock = stock.value;
     create_Product.price = price.value;
+    create_Product.size = size.value;
+    create_Product.brand = brand.value;
+    create_Product.category = category.value;
 
     this.productService.create(create_Product, () => {
       this.HideSpinner(Spinnertype.BallAtom);

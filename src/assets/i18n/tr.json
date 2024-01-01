@@ -1,0 +1,23 @@
+{
+    "SiteName": "ecommerce",
+    "Domain": "ecommerce.com",
+    "Endpoint": "https://ecommerce.com",
+    "PhoneNumber": "+90 545 942 9046",
+    "Info": "bilgi",
+    "Search": "Ara...",
+    "User": "Kullanıcı",
+    "Settings": "Ayarlar",
+    "Register": "Kayıt Ol",
+    "Login": "Giriş Yap",
+    "Logout": "Çıkış Yap",
+    "AdminPanel": "Yönetim Paneli",
+    "WorkingTimeText":"Çalışma Süresi",
+    "WorkingTime":"Pazartesi-Cumartesi 08:00 - 18:00",
+    "FreeShippingText":"Ücretsiz Tesilmat",
+    "FreeShipping":"200 Tl ve üzeri",
+    "MoneyBackText":"Para İadesi",
+    "MoneyBack":"14 gün içerisinde iade",
+    "Total":"toplam",
+    "Currency":"₺",
+    "Home":"Anasyafa"
+}

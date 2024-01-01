@@ -15,6 +15,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UiModule } from './ui/ui.module';
 import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from './services/common/language.service';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -25,6 +33,13 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
   imports: [
     GoogleSigninButtonModule,
     BrowserModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     BrowserAnimationsModule,
     AppRoutingModule,
     AdminModule, UiModule,
@@ -61,7 +76,7 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
         onError: err => console.log(err)
       } as SocialAuthServiceConfig
     },
-    {provide:HTTP_INTERCEPTORS, useClass:HttpErrorHandlerInterceptorService, multi: true}
+    {provide:HTTP_INTERCEPTORS, useClass:HttpErrorHandlerInterceptorService, multi: true},
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

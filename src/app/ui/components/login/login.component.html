@@ -1,25 +1,40 @@
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-  
-      <div class="form-group">
-        <label for="username">Kullanıcı Adı</label>
-        <input #txtUsernameOrEmail type="text" class="form-control" id="username" placeholder="Kullanıcı Adı & Email">
-        <small class="form-text text-muted invalid-feedback">***</small>
+<div class="login-register-wrapper">
+  <div class="container">
+      <div class="member-area-from-wrap">
+          <div class="row">
+              <!-- Login Content Start -->
+              <div class="col-lg-3"></div>
+              <div class="col-lg-9">
+                  <div class="login-reg-form-wrap  pr-lg-50">
+                      <h2>Sign In</h2>
+                          <div class="single-input-item">
+                              <input type="text" required #txtUsernameOrEmail id="username" placeholder="Kullanıcı Adı & Email" />
+                          </div>
+                          <div class="single-input-item">
+                              <input type="password" required #txtPassword id="password" placeholder="Şifre"/>
+                          </div>
+                          <div class="single-input-item">
+                              <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+                                  <div class="remember-meta">
+                                      <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                          <label class="custom-control-label" for="rememberMe">Remember Me</label>
+                                      </div>
+                                  </div>
+                                  <a href="#" class="forget-pwd" routerLink="/password-reset">Forget Password?</a>
+                              </div>
+                          </div>
+                          <div class="single-input-item">
+                            <button class="sqr-btn" type="submit" (click)="login(txtUsernameOrEmail.value, txtPassword.value)">Giriş Yap</button>
+                          </div>
+                          <div class="single-input-item">
+                            <asl-google-signin-button></asl-google-signin-button>
+                            <img src="../../../assets/facebook.png" style="width: 30px; height: 30px; cursor:pointer;" (click)="facebookLogin()" />
+                          </div>
+                  </div>
+              </div>
+              <!-- Login Content End -->
+          </div>
       </div>
-      <div class="form-group">
-        <label for="password">Şifre</label>      
-        <input #txtPassword type="password" class="form-control" id="password" placeholder="Şifre">
-      </div>
-
-      <asl-google-signin-button></asl-google-signin-button>
-      <img src="../../../assets/facebook.png" style="width: 30px; height: 30px; cursor:pointer;" (click)="facebookLogin()" />
-      <br />
-      <button style="margin-top:5px;" type="submit" class="btn btn-primary" (click)="login(txtUsernameOrEmail.value, txtPassword.value)">Giriş Yap</button>
-  
-      <a style="margin-top:5px;margin-left:5px;" routerLink="/password-reset" class="btn btn-secondary">Şifremi Unuttum</a>
-  
-    </div>
-    <div class="col-md-3"></div>
   </div>
-  
+</div>

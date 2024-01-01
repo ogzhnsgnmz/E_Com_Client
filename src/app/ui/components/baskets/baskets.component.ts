@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ToastrService } from 'ngx-toastr';
 import { BaseComponent, Spinnertype } from 'src/app/base/base/base.component';
 import { List_Basket_Item } from 'src/app/contracts/basket/list_basket_item';
 import { Update_Basket_Item } from 'src/app/contracts/basket/update-basket-item';
 import { Create_Order } from 'src/app/contracts/order/create_order';
 import { BasketItemDeleteState, BasketItemRemoveDialogComponent } from 'src/app/dialogs/basket-item-remove-dialog/basket-item-remove-dialog.component';
 import { ShoppingCompleteDialogComponent, ShoppingCompleteState } from 'src/app/dialogs/shopping-complete-dialog/shopping-complete-dialog.component';
-import { Position } from 'src/app/services/admin/alertify.service';
 import { DialogService } from 'src/app/services/common/dialog.service';
 import { BasketService } from 'src/app/services/common/models/basket.service';
 import { OrderService } from 'src/app/services/common/models/order.service';
@@ -27,15 +25,38 @@ export class BasketsComponent extends BaseComponent implements OnInit {
     private router: Router, private dialogService: DialogService) {
     super(spinner)
   }
+
+  subPrice: number = 0;
+  kdv: number = 0;
+  kargo: number = 30;
+  totalPrice: number = 0;
   
   basketItems: List_Basket_Item[]
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     this.ShowSpinner(Spinnertype.BallAtom);
     this.basketItems = await this.basketService.get()
+    this.updateTotalPrice(); 
     this.HideSpinner(Spinnertype.BallAtom);
+  }
+  
+  goToCheckout(basketItems: List_Basket_Item[]) {
+    this.router.navigate(['/checkout'], { 
+      queryParams: { 
+        totalPrice: this.totalPrice,
+        basketItems: JSON.stringify(basketItems)
+      }
+    });
+  }
+  
+  private updateTotalPrice() {
+    this.subPrice = this.basketItems.reduce((total, item) => total + (item.price) * item.quantity, 0);
+    this.kdv = this.subPrice*18/100
+    this.totalPrice = this.subPrice+this.kdv+this.kargo
   }
 
   async changeQuentity(object: any){
+    const currentUrl = this.router.url;
+
     this.ShowSpinner(Spinnertype.BallAtom);
     const basketItemId: string = object.target.attributes["id"].value;
     const quantity: number = object.target.value;
@@ -44,6 +65,10 @@ export class BasketsComponent extends BaseComponent implements OnInit {
     basketItem.quantity = quantity;
     await this.basketService.updateQuantity(basketItem);
     this.HideSpinner(Spinnertype.BallAtom);
+    this.updateTotalPrice();
+    this.router.navigate(['/']).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 
    async removeBasketItem(basketItemId: string){
@@ -57,6 +82,7 @@ export class BasketsComponent extends BaseComponent implements OnInit {
         $("#basketModal").modal("show");
       }
     });
+    this.updateTotalPrice();
   }
 
   async shoppingComplete(){
@@ -78,5 +104,6 @@ export class BasketsComponent extends BaseComponent implements OnInit {
         this.router.navigate(["/"]);
       }
     });
+    this.updateTotalPrice();
   }
 }

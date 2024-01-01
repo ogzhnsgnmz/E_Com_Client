@@ -1,43 +1,3 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
-  <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-          E-Ticaret
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link" routerLink="">Anasayfa</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" routerLink="products">Ürünler</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="admin" *ngIf="authService.isAuthenticated">Yönetim Paneli</a>
-              </li>
-          </ul>
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLink="register" *ngIf="!authService.isAuthenticated">Kayıt Ol</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLink="login" *ngIf="!authService.isAuthenticated">Giriş Yap</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="signOut()" *ngIf="authService.isAuthenticated">Çıkış Yap</a>
-            <li class="nav-item">
-                <button class="nav-link" (click)="loadComponent()" href="#" data-bs-toggle="modal" data-bs-target="#basketModal">Sepet</button>
-            </li>
-          </ul>
-      </div>
-  </div>
-</nav>
-<br><br><br>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
 <ngx-spinner size="default" name="s1" type="ball-atom"></ngx-spinner>
 <ngx-spinner size="default" name="s2" type="ball-scale-multiple"></ngx-spinner>
 <ngx-spinner size="default" name="s3" type="ball-spin-clockwise-fade-rotating"></ngx-spinner>
@@ -47,4 +7,5 @@
   <div class="modal-dialog modal-xl">
     <ng-template appDynamicLoadComponent></ng-template>
   </div>
- </div>
+</div>
+<router-outlet></router-outlet>

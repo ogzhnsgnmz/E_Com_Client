@@ -5,7 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import {MatListModule} from '@angular/material/list';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {MatListModule} from '@angular/material/list';
   imports: [
     CommonModule,
     RouterModule,
-    MatListModule
+    MatListModule,
+    MatToolbarModule
   ],
   exports: [
     HeaderComponent,

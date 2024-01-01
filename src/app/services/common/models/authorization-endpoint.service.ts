@@ -42,8 +42,3 @@ export class AuthorizationEndpointService {
     return (await promiseData).roles;
   }
 }
-
-
- //public string[] Roles { get; set; }
- //       public string Code { get; set; }
- //       public string Menu { get; set; }
