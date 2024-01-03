@@ -19,6 +19,12 @@
       <td mat-cell *matCellDef="let element"> {{element.price}} </td>
     </ng-container>
 
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="attribute">
+      <th mat-header-cell *matHeaderCellDef> Attribute </th>
+      <td mat-cell *matCellDef="let element"> <a routerLink="../product/{{(element.id)}}/attribute">Özelliklere Git</a></td>
+    </ng-container>
+
     <!-- Name Column -->
     <ng-container matColumnDef="photo">
       <th mat-header-cell *matHeaderCellDef></th>

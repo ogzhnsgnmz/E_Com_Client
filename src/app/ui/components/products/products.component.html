@@ -9,15 +9,10 @@
                         <div class="sidebar-category">
                             <ul>
                                 <li class="title"><i class="fa fa-bars"></i> categories</li>
-                                <li><a href="#">books</a><span>(10)</span></li>
-                                <li><a href="#">camera</a><span>(12)</span></li>
-                                <li><a href="#">computer</a><span>(08)</span></li>
-                                <li><a href="#">electronic</a><span>(16)</span></li>
-                                <li><a href="#">Necklaces</a><span>(11)</span></li>
-                                <li><a href="#">Rugby</a><span>(20)</span></li>
-                                <li><a href="#">smart phones</a><span>(15)</span></li>
-                                <li><a href="#">tablet</a><span>(12)</span></li>
-                                <li><a href="#">watch</a><span>(10)</span></li>
+                                <li *ngFor="let category of categories.datas">
+                                    <a href="products/{{category.slug}}/1">{{category.name}}</a>
+                                    <!--<span>(12)</span>-->
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -97,14 +92,6 @@
                         </div>
                     </div>
                     <!-- product tag end -->
-
-                    <!-- sidebar banner start -->
-                    <div class="sidebar-widget mb-30">
-                        <div class="img-container fix img-full">
-                            <a href="#"><img src="assets/img/banner/banner_shop.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <!-- sidebar banner end -->
                 </div>
             </div>
             <!-- sidebar end -->
@@ -156,7 +143,7 @@
                             <!-- product single grid item start -->
                             <div class="product-item fix mb-30">
                                 <div class="product-thumb">
-                                    <a href="product-details.html">
+                                    <a href="product/{{product.id}}">
                                         <img *ngIf="!product.productImageFiles.length" src="https://picsum.photos/200/200" class="img-pri" alt="">
                                         <img *ngIf="product.productImageFiles.length" src="https://picsum.photos/200/200" class="img-sec" alt="">
                                     </a>

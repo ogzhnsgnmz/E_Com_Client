@@ -13,6 +13,7 @@ export class ProductService {
   constructor(private httpClientService: HttpClientService) { }
 
   create(Product: Create_Product, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void){
+    Product.slug = Product.name.toUpperCase();
     this.httpClientService.post({
       controller: "products"
     },Product).subscribe(result =>{
@@ -41,12 +42,15 @@ export class ProductService {
 
     return await promiseData;
   } */
-  
-  async read(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalProductCount: number; products: List_Product[] }> {
+
+  async read(id: string, page: number = 0, size: number = 5, category: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalProductCount: number; products: List_Product[] }> {
     try {
+      const url = id ? `products/${id}` : 'products';
+      const queryString = category ? `page=${page}&size=${size}&category=${category}` : `page=${page}&size=${size}`;
+
       const response: Observable<{ totalProductCount: number; products: List_Product[] }> = this.httpClientService.get<{ totalProductCount: number; products: List_Product[] }>({
-        controller: "products",
-        queryString: `page=${page}&size=${size}`
+        controller: url,
+        queryString: queryString
       });
   
       // Eğer başarı durumunda successCallBack parametresi verilmişse çağır.
@@ -93,7 +97,9 @@ export class ProductService {
       controller : "products"
     }, id);
     const images: List_Product_Image[] = await firstValueFrom(getObservable);
-    successCallBack();
+    if (this.isSuccessCallbackProvided(successCallBack)) {
+      successCallBack();
+    }
     return images;
   }
 

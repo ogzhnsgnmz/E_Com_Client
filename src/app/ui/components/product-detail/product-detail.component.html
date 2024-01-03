@@ -8,29 +8,14 @@
                         <div class="col-lg-6">
                             <div class="product-large-slider mb-20 slick-arrow-style_2">
                                 <div class="pro-large-img img-zoom" id="img1">
-                                    <img src="assets/img/product/product-details-img1.jpg" alt="" />
+                                    <img *ngIf="!productImage[0]" src="https://picsum.photos/200/200">
+                                    <img *ngIf="productImage[0]" src="{{productImage[0].path}}">
                                 </div>
-                                <div class="pro-large-img img-zoom" id="img2">
-                                    <img src="assets/img/product/product-details-img2.jpg" alt=""/>
-                                </div>
-                                <div class="pro-large-img img-zoom" id="img3">
-                                    <img src="assets/img/product/product-details-img3.jpg" alt=""/>
-                                </div>
-                                <div class="pro-large-img img-zoom" id="img4">
-                                    <img src="assets/img/product/product-details-img4.jpg" alt=""/>
-                                </div>
-                            </div>
-                            <div class="pro-nav slick-padding2 slick-arrow-style_2">
-                                <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img1.jpg" alt="" /></div>
-                                <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img2.jpg" alt="" /></div>
-                                <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img3.jpg" alt="" /></div>
-                                <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img4.jpg" alt="" /></div>
-                                <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img2.jpg" alt="" /></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="product-details-des mt-md-34 mt-sm-34">
-                                <h3><a href="product-details.html">external product 12</a></h3>
+                                <h3><a href="product-details.html">{{product.name}}</a></h3>
                                 <div class="ratings">
                                     <span class="good"><i class="fa fa-star"></i></span>
                                     <span class="good"><i class="fa fa-star"></i></span>
@@ -46,13 +31,12 @@
                                 </div>
                                 <div class="availability mt-10">
                                     <h5>Availability:</h5>
-                                    <span>1 in stock</span>
+                                    <span>{{product.stock}} in stock</span>
                                 </div>
                                 <div class="pricebox">
-                                    <span class="regular-price">$160.00</span>
+                                    <span class="regular-price">{{product.price}}</span>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br>
-                                Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+                                <p>{{product.description}}</p>
                                 <div class="quantity-cart-box d-flex align-items-center">
                                     <div class="quantity">
                                         <div class="pro-qty"><input type="text" value="1"></div>

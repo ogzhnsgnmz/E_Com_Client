@@ -1,0 +1,46 @@
+{
+    "sliders": [
+        {
+          "image": "assets/img/slider/slider11_bg.jpg",
+          "lbl1": "assets/img/slider/slider11_lable1.png",
+          "lbl2": "assets/img/slider/slider11_lable1.png",
+          "lbl3": "assets/img/slider/slider11_lable1.png",
+          "lbl4": "assets/img/slider/slider11_lable4.png",
+          "title": "headphones az12",
+          "content": "Typi Non Habent Claritatem Insitam; Est Usus Legentis"
+        },{
+            "image": "assets/img/slider/slider11_bg.jpg",
+            "lbl1": "assets/img/slider/slider11_lable1.png",
+            "lbl2": "assets/img/slider/slider11_lable1.png",
+            "lbl3": "assets/img/slider/slider11_lable1.png",
+            "lbl4": "assets/img/slider/slider11_lable4.png",
+            "title": "Deneme",
+            "content": "Typi Non Habent Claritatem Insitam; Est Usus Legentis"
+        }
+    ],
+    "banners": [
+        {
+            "banner-1": "assets/img/banner/banner_left.jpg",
+            "banner-2": "assets/img/banner/banner_static_top1.jpg",
+            "banner-3": "assets/img/banner/banner_static_top2.jpg",
+            "banner-4": "assets/img/banner/banner_static_top3.jpg",
+            "banner-5": "assets/img/banner/banner_static1.jpg",
+            "banner-6": "assets/img/banner/banner_static2.jpg",
+            "banner-7": "assets/img/banner/banner_static3.jpg",
+            "banner-8": "",
+            "banner-9": "",
+            "banner-10": "",
+            "banner-11": "",
+            "banner-12": ""
+        }
+    ],
+    "populerBrands": [
+        {"id": "brand-1", "image": "assets/img/brand/br1.png"},
+        {"id": "brand-2", "image": "assets/img/brand/br2.png"},
+        {"id": "brand-3", "image": "assets/img/brand/br3.png"},
+        {"id": "brand-4", "image": "assets/img/brand/br4.png"},
+        {"id": "brand-5", "image": "assets/img/brand/br5.png"},
+        {"id": "brand-6", "image": "assets/img/brand/br6.png"},
+        {"id": "brand-7", "image": "assets/img/brand/br7.png"}
+    ]
+  }

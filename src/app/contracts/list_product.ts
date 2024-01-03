@@ -5,6 +5,7 @@ export class List_Product {
     name?:string;
     stock?:string;
     price?:string;
+    description?:string;
     createdDate: Date;
     updatedDate: Date;
     productImageFiles?: List_Product_Image[];

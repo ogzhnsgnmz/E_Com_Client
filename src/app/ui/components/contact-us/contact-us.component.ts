@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { JsonService } from 'src/app/services/common/json.service';
+import { LanguageService } from 'src/app/services/common/language.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent {
+
+  constructor(private languageService: LanguageService) {
+    this.languageService.setLanguage();
+  }
 
 }

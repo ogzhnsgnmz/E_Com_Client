@@ -7,33 +7,15 @@
                             <div class="title-icon">
                                 <i class="fa fa-crop"></i>
                             </div>
-                            <h3>Popular Brand</h3>
+                            <h3>{{ 'PopularBrand' | translate }}</h3>
                         </div> <!-- section title end -->
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="brand-active slick-padding slick-arrow-style">
-                            <div class="brand-item text-center">
-                                <a href="#"><img src="assets/img/brand/br1.png" alt=""></a>
-                            </div>
-                            <div class="brand-item text-center">
-                                <a href="#"><img src="assets/img/brand/br2.png" alt=""></a>
-                            </div>
-                            <div class="brand-item text-center">
-                                <a href="#"><img src="assets/img/brand/br3.png" alt=""></a>
-                            </div>
-                            <div class="brand-item text-center">
-                                <a href="#"><img src="assets/img/brand/br4.png" alt=""></a>
-                            </div>
-                            <div class="brand-item text-center">
-                                <a href="#"><img src="assets/img/brand/br5.png" alt=""></a>
-                            </div>
-                            <div class="brand-item text-center">
-                                <a href="#"><img src="assets/img/brand/br6.png" alt=""></a>
-                            </div>
-                            <div class="brand-item text-center">
-                                <a href="#"><img src="assets/img/brand/br4.png" alt=""></a>
+                            <div class="brand-item text-center" *ngFor="let data of jsonData.populerBrands">
+                                <a href="#"><img src="{{data.images}}" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -53,14 +35,14 @@
                                   <i class="fa fa-envelope"></i>
                               </div>
                               <div class="newsletter__content">
-                                  <h3>sign up for newsletter</h3>
-                                  <p>Duis autem vel eum iriureDuis autem vel eum</p>
+                                  <h3>{{ 'NewsletterTitle' | translate }}</h3>
+                                  <p>{{ 'NewsletterContent' | translate }}</p>
                               </div>
                           </div>
                           <div class="newsletter__box">
                               <form id="mc-form">
                                   <input type="email" id="mc-email" autocomplete="off" placeholder="Email">
-                                  <button id="mc-submit">subscribe!</button>
+                                  <button id="mc-submit">{{ 'Subscribe' | translate }}</button>
                               </form>
                           </div>
                           <!-- mailchimp-alerts Start -->
@@ -72,11 +54,11 @@
                           <!-- mailchimp-alerts end -->
                       </div>
                       <div class="social-icons">
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Google-plus"><i class="fa fa-google-plus"></i></a>
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube"></i></a>
+                          <a href="{{ 'Facebook' | translate }}" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                          <a href="{{ 'Twitter' | translate }}" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+                          <a href="{{ 'Instagram' | translate }}" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
+                          <a href="{{ 'Google' | translate }}" data-toggle="tooltip" data-placement="top" title="Google-plus"><i class="fa fa-google-plus"></i></a>
+                          <a href="{{ 'Youtube' | translate }}" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube"></i></a>
                       </div>
                   </div>
               </div>
@@ -90,31 +72,26 @@
                       <div class="col-md-3 col-sm-6">
                           <div class="footer-widget mb-sm-30">
                               <div class="widget-title mb-10 mb-sm-6">
-                                  <h4>contact us</h4>
+                                  <h4>{{ 'ContactUs' | translate }}</h4>
                               </div>
                               <div class="widget-body">
                                   <ul class="location">
-                                      <li><i class="fa fa-envelope"></i>support@galio.com</li>
-                                      <li><i class="fa fa-phone"></i>(800) 0123 456 789</li>
-                                      <li><i class="fa fa-map-marker"></i>Address: 1234 - Bandit Tringi Aliquam
-                                          Vitae. New York</li>
+                                      <li><i class="fa fa-envelope"></i>{{ 'Info' | translate }}@{{ 'Domain' | translate }}</li>
+                                      <li><i class="fa fa-phone"></i>{{ 'PhoneNumber' | translate }}</li>
+                                      <li><i class="fa fa-map-marker"></i>{{ 'Address' | translate }}</li>
                                   </ul>
-                                  <a class="map-btn" href="contact-us.html">open in google map</a>
+                                  <a class="map-btn" href="contact-us.html">{{ 'OpenInGoogleMap' | translate }}</a>
                               </div>
                           </div> <!-- single widget end -->
                       </div> <!-- single widget column end -->
                       <div class="col-md-3 col-sm-6">
                           <div class="footer-widget mb-sm-30">
                               <div class="widget-title mb-10 mb-sm-6">
-                                  <h4>my account</h4>
+                                  <h4>{{ 'MyAccount' | translate }}</h4>
                               </div>
                               <div class="widget-body">
                                   <ul>
-                                      <li><a href="#">my account</a></li>
-                                      <li><a href="#">my cart</a></li>
-                                      <li><a href="#">checkout</a></li>
-                                      <li><a href="#">my wishlist</a></li>
-                                      <li><a href="#">login</a></li>
+                                      <li><a href="#">{{ 'MyAccount' | translate }}</a></li>
                                   </ul>
                               </div>
                           </div> <!-- single widget end -->
@@ -122,15 +99,11 @@
                       <div class="col-md-3 col-sm-6">
                           <div class="footer-widget mb-sm-30">
                               <div class="widget-title mb-10 mb-sm-6">
-                                  <h4>short code</h4>
+                                  <h4>{{ 'MyAccount' | translate }}</h4>
                               </div>
                               <div class="widget-body">
                                   <ul>
-                                      <li><a href="#">gallery</a></li>
-                                      <li><a href="#">accordion</a></li>
-                                      <li><a href="#">carousel</a></li>
-                                      <li><a href="#">map</a></li>
-                                      <li><a href="#">tab</a></li>
+                                      <li><a href="#">{{ 'MyAccount' | translate }}</a></li>
                                   </ul>
                               </div>
                           </div> <!-- single widget end -->
@@ -138,15 +111,11 @@
                       <div class="col-md-3 col-sm-6">
                           <div class="footer-widget mb-sm-30">
                               <div class="widget-title mb-10 mb-sm-6">
-                                  <h4>product tags</h4>
+                                  <h4>{{ 'MyAccount' | translate }}</h4>
                               </div>
                               <div class="widget-body">
                                   <ul>
-                                      <li><a href="#">computer</a></li>
-                                      <li><a href="#">camera</a></li>
-                                      <li><a href="#">smart phone</a></li>
-                                      <li><a href="#">watch</a></li>
-                                      <li><a href="#">tablet</a></li>
+                                      <li><a href="#">{{ 'MyAccount' | translate }}</a></li>
                                   </ul>
                               </div>
                           </div> <!-- single widget end -->

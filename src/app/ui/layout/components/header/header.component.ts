@@ -5,6 +5,11 @@ import { CustomToastrService, TaostrMessageType, ToastrPosition } from 'src/app/
 import { AppComponent } from 'src/app/app.component';
 import { LanguageService } from 'src/app/services/common/language.service';
 import { filter } from 'rxjs';
+import { CategoryService } from 'src/app/services/common/models/category.service';
+import { List_Category } from 'src/app/contracts/category/list_category';
+import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { BaseComponent, Spinnertype } from 'src/app/base/base/base.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 declare var $: any
 
@@ -13,23 +18,32 @@ declare var $: any
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent extends BaseComponent{
   currentPath: string;
   pathSegments: string[];
+  categories: any;
 
-  constructor(public authService: AuthService, 
+  constructor(spinner: NgxSpinnerService,
+    public authService: AuthService, 
     private toastrService: CustomToastrService, 
     private router: Router, 
     private appComponent: AppComponent,
-    private languageService: LanguageService) {
+    private languageService: LanguageService,
+    private categoryService: CategoryService,
+    private alertifyService: AlertifyService) {
+      super(spinner)
     authService.identityCheck();
-    this.languageService.setLanguage('tr');
+    this.languageService.setLanguage();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.currentPath = event.urlAfterRedirects;
         this.pathSegments = this.currentPath.split('/');
       });
+  }
+
+  async ngOnInit(){
+    this.categories = await this.categoryService.getAllCategories(0, 20);
   }
 
   signOut() {

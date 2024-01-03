@@ -16,7 +16,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UiModule } from './ui/ui.module';
 import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LanguageService } from './services/common/language.service';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 

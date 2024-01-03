@@ -9,7 +9,7 @@ export class JqueryService {
 
   constructor() { }
   ngAfterViewInit() {
-    "use strict";
+	"use strict";
 
 	var $window = $(window);
 	$window.on('scroll', function () {

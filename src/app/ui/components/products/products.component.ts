@@ -6,6 +6,7 @@ import { BaseUrl } from 'src/app/contracts/base_url';
 import { Create_Basket_Item } from 'src/app/contracts/basket/create_basket_item';
 import { List_Product } from 'src/app/contracts/list_product';
 import { BasketService } from 'src/app/services/common/models/basket.service';
+import { CategoryService } from 'src/app/services/common/models/category.service';
 import { FileService } from 'src/app/services/common/models/file.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 import { CustomToastrService, TaostrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
@@ -17,15 +18,19 @@ import { CustomToastrService, TaostrMessageType, ToastrPosition } from 'src/app/
 })
 export class ProductsComponent extends BaseComponent implements OnInit {
 
+  categories: any;
+
   constructor(private productService:ProductService,
     private activetadRoute: ActivatedRoute,
     private fileService: FileService,
     private basketService: BasketService,
     spinner: NgxSpinnerService,
-    private customToastrService: CustomToastrService) {
+    private customToastrService: CustomToastrService,
+    private categoryService: CategoryService) {
       super(spinner)
   }
 
+  currentCategory: string;
   currentPageNo: number;
   totalProductCount: number;
   totalPageCount: number;
@@ -35,12 +40,14 @@ export class ProductsComponent extends BaseComponent implements OnInit {
 
   products: List_Product[];
   async ngOnInit() {
+    this.getCategories();
     this.baseUrl = await this.fileService.getBaseStorageUrl();
     this.activetadRoute.params.subscribe(
       async params => {
+        this.currentCategory = params["category"] ?? 1;
         this.currentPageNo = parseInt(params["pageNo"] ?? 1);
-
-        const data: {totalProductCount: number, products: List_Product[]} = await this.productService.read(this.currentPageNo-1, this.pageSize, 
+        console.log(this.currentCategory);
+        const data: {totalProductCount: number, products: List_Product[]} = await this.productService.read(null ,this.currentPageNo-1, this.pageSize, this.currentCategory, 
         ()=>{
   
         },
@@ -82,6 +89,10 @@ export class ProductsComponent extends BaseComponent implements OnInit {
             this.pageList.push(i);
       }
     );
+  }
+
+  async getCategories(){
+    this.categories = await this.categoryService.getAllCategories(0, 20);
   }
 
   async addToBasket(product: List_Product){

@@ -21,19 +21,18 @@ declare var $: any;
 export class ListComponent extends BaseComponent implements OnInit {
   constructor(spinner: NgxSpinnerService, 
     private productService: ProductService,
-    private categoryService: CategoryService, 
     private alertifyService: AlertifyService,
     private dialogService: DialogService) {
     super(spinner);
   }
 
-  displayedColumns: string[] = ['name', 'stock', 'price', 'photo', 'edit', 'delete'];
+  displayedColumns: string[] = ['name', 'stock', 'price', 'attribute', 'photo', 'edit', 'delete'];
   dataSource: MatTableDataSource<List_Product> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   async getProducts(){
     this.ShowSpinner(Spinnertype.BallAtom);
-    const allProducts:{totalProductCount: number; products: List_Product[]} = await this.productService.read(this.paginator ? this.paginator.pageIndex : 0,this.paginator ? this.paginator.pageSize : 5, () => this.HideSpinner(Spinnertype.BallAtom), errorMessage => this.alertifyService.message(errorMessage, {
+    const allProducts:{totalProductCount: number; products: List_Product[]} = await this.productService.read(null, this.paginator ? this.paginator.pageIndex : 0,this.paginator ? this.paginator.pageSize : 5, null, () => this.HideSpinner(Spinnertype.BallAtom), errorMessage => this.alertifyService.message(errorMessage, {
       dismissOthers: true,
       messageType: MessageType.Error,
       position: Position.TopRight

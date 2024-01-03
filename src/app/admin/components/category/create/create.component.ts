@@ -11,6 +11,8 @@ import { CategoryService } from 'src/app/services/common/models/category.service
 })
 export class CreateComponent extends BaseComponent implements OnInit {
 
+  slug: string;
+
   constructor(spiner: NgxSpinnerService,
     private categoryService: CategoryService,
     private alertify: AlertifyService) {
@@ -24,9 +26,8 @@ export class CreateComponent extends BaseComponent implements OnInit {
 
   create(name: HTMLInputElement) {
     this.ShowSpinner(Spinnertype.BallAtom);
-
-
-    this.categoryService.create(name.value, () => {
+    this.slug = name.value.toLowerCase();
+    this.categoryService.create(name.value, this.slug, () => {
       this.HideSpinner(Spinnertype.BallAtom);
       this.alertify.message("Category başarıyla eklenmiştir.", {
         dismissOthers: true,

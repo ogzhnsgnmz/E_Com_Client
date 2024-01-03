@@ -8,6 +8,7 @@ import { PasswordResetModule } from './password-reset/password-reset.module';
 import { UpdatePasswordModule } from './update-password/update-password.module';
 import { AboutUsModule } from './about-us/about-us.module';
 import { HomeModule } from './home/home.module';
+import { ProductDetailModule } from './product-detail/product-detail.module';
 
 
 
@@ -22,7 +23,8 @@ import { HomeModule } from './home/home.module';
     PasswordResetModule,
     UpdatePasswordModule,
     AboutUsModule,
-    HomeModule
+    HomeModule,
+    ProductDetailModule
   ],
   exports: [
     BasketsModule

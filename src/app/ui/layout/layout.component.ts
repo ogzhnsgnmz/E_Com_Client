@@ -18,6 +18,6 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit() {
     this.jqueryService.ngAfterViewInit();
-	this.languageService.setLanguage('tr');
+	this.languageService.setLanguage();
   }
 }

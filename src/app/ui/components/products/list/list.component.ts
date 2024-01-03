@@ -41,7 +41,8 @@ export class ListComponent extends BaseComponent implements OnInit {
       async params => {
         this.currentPageNo = parseInt(params["pageNo"] ?? 1);
 
-        const data: {totalProductCount: number, products: List_Product[]} = await this.productService.read(this.currentPageNo-1, this.pageSize, 
+        const data: {totalProductCount: number, products: List_Product[]} = await this.productService.read(
+          null, this.currentPageNo-1, this.pageSize, null,
         ()=>{
   
         },

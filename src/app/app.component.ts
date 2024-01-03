@@ -27,11 +27,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.languageService.setLanguage('tr');
+    this.languageService.setLanguage();
   }
 
   changeLanguage(language: string) {
-    this.languageService.setLanguage(language);
+    this.languageService.setLanguage();
   }
 
   signOut() {

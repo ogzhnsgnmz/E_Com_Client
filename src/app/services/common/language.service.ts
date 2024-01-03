@@ -9,7 +9,7 @@ export class LanguageService {
     this.translate.setDefaultLang('en');
   }
 
-  setLanguage(language: string) {
-    this.translate.use(language);
+  setLanguage() {
+    this.translate.use('tr');
   }
 }

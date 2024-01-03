@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="contact-message">
-                    <h2>tell us your project</h2>
+                    <h2>{{ "tellUsYouProject" | translate }}</h2>
                     <form id="contact-form" action="http://demo.hasthemes.com/galio-v6/galio/assets/php/mail.php" method="post" class="contact-form">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -23,7 +23,7 @@
                                     <textarea placeholder="Message *" name="message"  class="form-control2" required=""></textarea>     
                                 </div>   
                                 <div class="contact-btn">
-                                    <button class="sqr-btn" type="submit">Send Message</button> 
+                                    <button class="sqr-btn" type="submit">{{ "SendMessage" | translate }}</button> 
                                 </div> 
                             </div> 
                             <div class="col-12 d-flex justify-content-center">
@@ -35,16 +35,16 @@
             </div>
             <div class="col-lg-6">
                 <div class="contact-info mt-md-28 mt-sm-28">
-                    <h2>contact us</h2>
-                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas human.</p>
+                    <h2>{{ "ContactUs" | translate }}</h2>
+                    <p>{{ "ContactContent" | translate }}</p>
                     <ul>
-                        <li><i class="fa fa-fax"></i> Address : No 40 Baria Sreet 133/2 NewYork City</li>
-                        <li><i class="fa fa-phone"></i> info@yourdomain.com</li>
-                        <li><i class="fa fa-envelope-o"></i> +88013245657</li>
+                        <li><i class="fa fa-fax"></i> {{ "Address" | translate }}</li>
+                        <li><i class="fa fa-phone"></i> {{ "Info" | translate }}@{{ "Domain" | translate }}</li>
+                        <li><i class="fa fa-envelope-o"></i> {{ "PhoneNumber" | translate }}</li>
                     </ul>
                     <div class="working-time">
-                        <h3>Working hours</h3>
-                        <p><span>Monday – Saturday:</span>08AM – 22PM</p>
+                        <h3>{{ "WorkingHourse" | translate }}</h3>
+                        <p>{{ "WorkingTime" | translate }}</p>
                     </div>
                 </div>
             </div>

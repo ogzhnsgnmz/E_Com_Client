@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
 import { HttpClientService } from '../http-client.service';
-import { List_Category } from 'src/app/contracts/category/list_category';
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +22,10 @@ export class CategoryService {
     return await promiseData;
   }
 
-  async create(name: string, successCallBack?: () => void, errorCallBack?: (error) => void) {
+  async create(name: string, slug: string, successCallBack?: () => void, errorCallBack?: (error) => void) {
     const observable: Observable<any> = this.httpClientService.post({
       controller: "categories"
-    }, { name: name });
+    }, { name: name, slug: slug });
 
     const promiseData = firstValueFrom(observable);
     promiseData.then(successCallBack)
