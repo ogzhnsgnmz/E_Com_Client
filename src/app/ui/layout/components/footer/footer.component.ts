@@ -15,7 +15,7 @@ export class FooterComponent {
   constructor(private languageService: LanguageService,
     private httpClient: HttpClient,
     private jsonService: JsonService) {
-    this.languageService.setLanguage();
+      this.languageService.setDefaultLanguage();
   }
   
   async ngOnInit() {

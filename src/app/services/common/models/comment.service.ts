@@ -5,27 +5,26 @@ import { Observable, firstValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductAttributeService {
+export class CommentService {
 
   constructor(private httpClientService: HttpClientService) { }
 
-  async getAttributes(page: number, size: number, successCallBack?: () => void, errorCallBack?: (error) => void) {
+  async getComments(productId: string, page: number, size: number, successCallBack?: () => void, errorCallBack?: (error) => void) {
     const observable: Observable<any> = this.httpClientService.get({
-      controller: "ProductAttributes",
-      queryString: `page=${page}&size=${size}`
+      controller: "comments",
+      action: productId,
+      queryString: `Page=${page}&Size=${size}&ProductId=${productId}`
     });
-
     const promiseData = firstValueFrom(observable);
     promiseData.then(successCallBack)
       .catch(errorCallBack);
-
     return await promiseData;
   }
 
-  async create(productId: string, value: string, attributeId: string, successCallBack?: () => void, errorCallBack?: (error) => void) {
+  async create(content: string, rating: number, productId: string, successCallBack?: () => void, errorCallBack?: (error) => void) {
     const observable: Observable<any> = this.httpClientService.post({
-      controller: "ProductAttributes"
-    }, { Value: value, AttributeId: attributeId, ProductId: productId });
+      controller: "comments"
+    }, { Content: content, Rating: rating, ProductId: productId });
 
     const promiseData = firstValueFrom(observable);
     promiseData.then(successCallBack)

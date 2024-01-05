@@ -32,18 +32,22 @@ export class HeaderComponent extends BaseComponent{
     private categoryService: CategoryService,
     private alertifyService: AlertifyService) {
       super(spinner)
-    authService.identityCheck();
-    this.languageService.setLanguage();
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.currentPath = event.urlAfterRedirects;
-        this.pathSegments = this.currentPath.split('/');
-      });
+      this.languageService.setDefaultLanguage();
+      authService.identityCheck();
+      this.router.events
+        .pipe(filter((event) => event instanceof NavigationEnd))
+        .subscribe((event: NavigationEnd) => {
+          this.currentPath = event.urlAfterRedirects;
+          this.pathSegments = this.currentPath.split('/');
+        });
   }
 
   async ngOnInit(){
     this.categories = await this.categoryService.getAllCategories(0, 20);
+  }
+
+  setLanguage(language: string) {
+    this.languageService.useLanguage(language);
   }
 
   signOut() {

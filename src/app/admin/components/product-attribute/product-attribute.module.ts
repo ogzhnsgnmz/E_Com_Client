@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DeleteDirectiveModule } from 'src/app/directives/admin/delete.directive.module';
+import { FileUploadModule } from 'src/app/services/common/file-upload/file-upload.module';
+import { DialogModule } from '@angular/cdk/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -23,10 +26,18 @@ import { DeleteDirectiveModule } from 'src/app/directives/admin/delete.directive
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: "", component: ProductAttributeComponent }
+      {path:"", component: ProductAttributeComponent}
     ]),
-    MatSidenavModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule,
-    DeleteDirectiveModule
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    DeleteDirectiveModule,
+    FileUploadModule,
+    DialogModule,
+    MatSelectModule
   ]
 })
 export class ProductAttributeModule { }

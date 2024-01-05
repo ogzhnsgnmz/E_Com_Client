@@ -7,6 +7,10 @@
             <div class="row">
                 <div class="col-lg-6 col-md-5">
                     <div class="header-call-action">
+                        <img src="../../../../../assets/flags/tr.gif" style="width:20px;height:15px;margin-right:5px" (click)="setLanguage('tr')">
+                        <img src="../../../../../assets/flags/en.gif" style="width:20px;height:15px;margin-right:5px" (click)="setLanguage('en')">
+                        <img src="../../../../../assets/flags/fr.gif" style="width:20px;height:15px;margin-right:5px" (click)="setLanguage('fr')">
+                        <img src="../../../../../assets/flags/ge.gif" style="width:20px;height:15px;margin-right:45px" (click)="setLanguage('ge')">
                         <a href="#">
                             <i class="fa fa-envelope"></i>
                             {{ 'Info' | translate }}@{{ 'Domain' | translate }}
@@ -20,7 +24,7 @@
                 <div class="col-lg-6 col-md-7">
                     <div class="header-top-right float-md-right float-none">
                         <nav>
-                            <ul>
+                            <ul>                        
                                 <li *ngIf="authService.isAuthenticated">
                                     <a routerLink="admin">{{ 'AdminPanel' | translate }}</a>
                                 </li>

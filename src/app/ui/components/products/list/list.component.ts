@@ -6,6 +6,7 @@ import { BaseUrl } from 'src/app/contracts/base_url';
 import { Create_Basket_Item } from 'src/app/contracts/basket/create_basket_item';
 import { List_Product } from 'src/app/contracts/list_product';
 import { Position } from 'src/app/services/admin/alertify.service';
+import { LanguageService } from 'src/app/services/common/language.service';
 import { BasketService } from 'src/app/services/common/models/basket.service';
 import { FileService } from 'src/app/services/common/models/file.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
@@ -23,8 +24,10 @@ export class ListComponent extends BaseComponent implements OnInit {
     private fileService: FileService,
     private basketService: BasketService,
     spinner: NgxSpinnerService,
-    private customToastrService: CustomToastrService) {
-      super(spinner)
+    private customToastrService: CustomToastrService,
+    private languageService: LanguageService) {
+    super(spinner)
+    this.languageService.setDefaultLanguage;
   }
 
   currentPageNo: number;

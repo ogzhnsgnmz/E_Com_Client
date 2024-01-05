@@ -27,8 +27,8 @@
   <mat-label>Attribute</mat-label>
   <mat-select [(value)]="selectedAttribute">
     <!-- Use *ngFor to iterate over categoryDataSource and populate options -->
-    <mat-option *ngFor="let attribute of attributeDataSource.data" [value]="attribute.name">
-      {{ attribute.name }} <!-- Replace with the property you want to display -->
+    <mat-option *ngFor="let attribute of attributeDataSource.data" [value]="attribute.value">
+      {{ attribute.value }} <!-- Replace with the property you want to display -->
     </mat-option>
   </mat-select>
 </mat-form-field>

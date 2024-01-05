@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent } from 'src/app/base/base/base.component';
 import { Create_User } from 'src/app/contracts/user/create_user';
 import { User } from 'src/app/entities/user';
+import { LanguageService } from 'src/app/services/common/language.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { CustomToastrService, TaostrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
@@ -18,8 +19,10 @@ export class RegisterComponent extends BaseComponent implements OnInit{
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
     private toastrService: CustomToastrService,
-    spinner: NgxSpinnerService) {
+    spinner: NgxSpinnerService,
+    private languageService: LanguageService) {
     super(spinner)
+    this.languageService.setDefaultLanguage();
   }
 
   frm!: FormGroup;

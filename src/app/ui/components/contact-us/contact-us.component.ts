@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JsonService } from 'src/app/services/common/json.service';
+import { JqueryService } from 'src/app/services/common/jquery.service';
 import { LanguageService } from 'src/app/services/common/language.service';
 
 @Component({
@@ -9,8 +9,13 @@ import { LanguageService } from 'src/app/services/common/language.service';
 })
 export class ContactUsComponent {
 
-  constructor(private languageService: LanguageService) {
-    this.languageService.setLanguage();
+  constructor(private languageService: LanguageService,
+    private jqueryService: JqueryService) {
+      this.languageService.setDefaultLanguage();
+  }
+
+  async ngAfterViewInit(){
+    this.jqueryService.ngAfterViewInit();
   }
 
 }

@@ -43,13 +43,14 @@ export class ProductService {
     return await promiseData;
   } */
 
-  async read(id: string, page: number = 0, size: number = 5, category: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalProductCount: number; products: List_Product[] }> {
+  async readByBrand(id: string, page: number = 0, size: number = 5, brand: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalProductCount: number; products: List_Product[] }> {
     try {
       const url = id ? `products/${id}` : 'products';
-      const queryString = category ? `page=${page}&size=${size}&category=${category}` : `page=${page}&size=${size}`;
+      const queryString = brand ? `page=${page}&size=${size}&brand=${brand}` : `page=${page}&size=${size}`;
 
       const response: Observable<{ totalProductCount: number; products: List_Product[] }> = this.httpClientService.get<{ totalProductCount: number; products: List_Product[] }>({
         controller: url,
+        action : "GetProductBrands",
         queryString: queryString
       });
   
@@ -72,6 +73,60 @@ export class ProductService {
       return Promise.reject(errorResponse);
     }
   }
+
+  async read(id: string, page: number = 0, size: number = 5, category: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalProductCount: number; products: List_Product[] }> {
+    try {
+      const url = id ? `products/${id}` : 'products';
+      const queryString = category ? `page=${page}&size=${size}&category=${category}&productId=${id}` : `page=${page}&size=${size}&productId=${id}`;
+
+      const response: Observable<{ totalProductCount: number; products: List_Product[] }> = this.httpClientService.get<{ totalProductCount: number; products: List_Product[] }>({
+        controller: url,
+        action: "GetProducts",
+        queryString: queryString
+      });
+  
+      // Eğer başarı durumunda successCallBack parametresi verilmişse çağır.
+      if (this.isSuccessCallbackProvided(successCallBack)) {
+        successCallBack();
+      }
+  
+      // Observable'ın içindeki değeri bekleyin
+      const responseData = await response.toPromise();
+  
+      return responseData;
+    } catch (errorResponse) {
+      // Hata durumunda errorCallBack parametresi verilmişse çağır.
+      if (this.isErrorCallbackProvided(errorCallBack)) {
+        errorCallBack(errorResponse.message);
+      }
+  
+      // Hata durumunda Promise.reject kullanarak hata zincirini yakalayın.
+      return Promise.reject(errorResponse);
+    }
+  }
+
+  async readById(id: string, page: number = 0, size: number = 5, category: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<any> {
+    try {
+        const queryString = category ? `page=${page}&size=${size}&category=${category}` : `page=${page}&size=${size}`;
+
+        const response: Observable<any> = this.httpClientService.get<any>({
+            controller: "products",
+            action: id,
+            queryString: queryString
+        });
+        if (this.isSuccessCallbackProvided(successCallBack)) {
+            successCallBack();
+        }
+        const responseData = await response.toPromise();
+        return responseData;
+    } catch (errorResponse) {
+        if (this.isErrorCallbackProvided(errorCallBack)) {
+            errorCallBack(errorResponse.message);
+        }
+        return Promise.reject(errorResponse);
+    }
+}
+
   
   // successCallBack parametresi verilmişse true döner.
   private isSuccessCallbackProvided(callback: any): callback is () => void {

@@ -9,7 +9,7 @@ import { LanguageService } from 'src/app/services/common/language.service';
 export class AboutUsComponent {
 
   constructor(private languageService: LanguageService) {
-    this.languageService.setLanguage();
+    this.languageService.setDefaultLanguage();
   }
   
 }

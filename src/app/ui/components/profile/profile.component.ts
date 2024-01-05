@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LanguageService } from 'src/app/services/common/language.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-
+  constructor(private languageService: LanguageService) {
+    this.languageService.setDefaultLanguage();
+  }
 }

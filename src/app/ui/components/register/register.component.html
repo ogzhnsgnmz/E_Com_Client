@@ -5,7 +5,7 @@
               <div class="col-lg-3"></div>
               <div class="col-lg-9">
                   <div class="login-reg-form-wrap mt-md-34 mt-sm-34">
-                      <h2>Singup Form</h2>
+                      <h2>{{ "Register" | translate }}</h2>
                       <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
                           <div class="single-input-item">
                               <input type="text" formControlName="nameSurname" class="form-control" id="nameSurname" placeholder="Ad Soyad" [ngClass]="{'is-invalid': submitted && component.nameSurname.errors}" required>
@@ -36,7 +36,7 @@
                               </div>
                           </div>
                           <div class="single-input-item">
-                              <button type="submit" class="sqr-btn">Kayıt Ol</button>
+                              <button type="submit" class="sqr-btn">{{ "Register" | translate }}</button>
                           </div>
                       </form>
                   </div>

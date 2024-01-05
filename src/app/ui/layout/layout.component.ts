@@ -14,10 +14,10 @@ export class LayoutComponent implements OnInit {
   constructor(private el: ElementRef,
 	private languageService: LanguageService,
 	private jqueryService: JqueryService) {
+    this.languageService.setDefaultLanguage();
   }
 
   ngOnInit() {
     this.jqueryService.ngAfterViewInit();
-	this.languageService.setLanguage();
   }
 }

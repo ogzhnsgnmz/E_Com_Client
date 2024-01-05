@@ -8,6 +8,7 @@ import { Create_Order } from 'src/app/contracts/order/create_order';
 import { BasketItemDeleteState, BasketItemRemoveDialogComponent } from 'src/app/dialogs/basket-item-remove-dialog/basket-item-remove-dialog.component';
 import { ShoppingCompleteDialogComponent, ShoppingCompleteState } from 'src/app/dialogs/shopping-complete-dialog/shopping-complete-dialog.component';
 import { DialogService } from 'src/app/services/common/dialog.service';
+import { LanguageService } from 'src/app/services/common/language.service';
 import { BasketService } from 'src/app/services/common/models/basket.service';
 import { OrderService } from 'src/app/services/common/models/order.service';
 import { CustomToastrService, TaostrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
@@ -22,8 +23,9 @@ declare var $: any;
 export class BasketsComponent extends BaseComponent implements OnInit {
   constructor(spinner: NgxSpinnerService, private basketService: BasketService, 
     private orderService: OrderService, private toastrService: CustomToastrService,
-    private router: Router, private dialogService: DialogService) {
+    private router: Router, private dialogService: DialogService, private languageService: LanguageService) {
     super(spinner)
+    this.languageService.setDefaultLanguage();
   }
 
   subPrice: number = 0;

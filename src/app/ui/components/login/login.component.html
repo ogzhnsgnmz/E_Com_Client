@@ -6,7 +6,7 @@
               <div class="col-lg-3"></div>
               <div class="col-lg-9">
                   <div class="login-reg-form-wrap  pr-lg-50">
-                      <h2>Sign In</h2>
+                      <h2>{{ "Login" | translate }}</h2>
                           <div class="single-input-item">
                               <input type="text" required #txtUsernameOrEmail id="username" placeholder="Kullanıcı Adı & Email" />
                           </div>
@@ -18,14 +18,14 @@
                                   <div class="remember-meta">
                                       <div class="custom-control custom-checkbox">
                                           <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                          <label class="custom-control-label" for="rememberMe">Remember Me</label>
+                                          <label class="custom-control-label" for="rememberMe">{{ "RememberMe" | translate }}</label>
                                       </div>
                                   </div>
-                                  <a href="#" class="forget-pwd" routerLink="/password-reset">Forget Password?</a>
+                                  <a href="#" class="forget-pwd" routerLink="/password-reset">{{ "ForgetPassword" | translate }}</a>
                               </div>
                           </div>
                           <div class="single-input-item">
-                            <button class="sqr-btn" type="submit" (click)="login(txtUsernameOrEmail.value, txtPassword.value)">Giriş Yap</button>
+                            <button class="sqr-btn" type="submit" (click)="login(txtUsernameOrEmail.value, txtPassword.value)">{{ "Login" | translate }}</button>
                           </div>
                           <div class="single-input-item">
                             <asl-google-signin-button></asl-google-signin-button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseUrl } from 'src/app/contracts/base_url';
 import { JqueryService } from 'src/app/services/common/jquery.service';
+import { LanguageService } from 'src/app/services/common/language.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
 declare var $: any;
@@ -17,7 +18,9 @@ export class ProductDetailComponent implements OnInit {
   productImage: any;
   baseUrl: BaseUrl;
 
-  constructor(private productService: ProductService, private jqueryService: JqueryService) {
+  constructor(private productService: ProductService, private jqueryService: JqueryService,
+    private languageService: LanguageService) {
+      this.languageService.setDefaultLanguage();
   }
 
   ngOnInit() {
@@ -30,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   async getProduct() {
-    this.product = await this.productService.read(this.productId,null,null,null);
+    this.product = await this.productService.readById(this.productId,null,null,null);
   }
 
   async getProductImage(){

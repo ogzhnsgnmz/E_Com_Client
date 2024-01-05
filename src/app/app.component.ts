@@ -24,14 +24,11 @@ export class AppComponent implements OnInit {
     private dynamicLoadComponentService: DynamicLoadComponentService,
     private languageService: LanguageService) {
     authService.identityCheck();
+    this.languageService.setDefaultLanguage;
   }
 
   ngOnInit() {
-    this.languageService.setLanguage();
-  }
-
-  changeLanguage(language: string) {
-    this.languageService.setLanguage();
+    this.languageService.setDefaultLanguage;
   }
 
   signOut() {

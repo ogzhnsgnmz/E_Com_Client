@@ -1,5 +1,14 @@
-<mat-form-field appearance="fill" class="attribute-create">
-    <mat-label>Name</mat-label>
-    <input matInput #txtName>
-  </mat-form-field> 
-  <button mat-raised-button class="btn" color="primary" (click)="create(txtName)">Create Attribute</button>
+<mat-form-field appearance="fill">
+  <mat-label>Brand</mat-label>
+  <mat-select [(value)]="selectedAttribute">
+    <mat-option *ngFor="let attribute of attributeDataSource.data" [value]="attribute.id">
+      {{ attribute.value }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Name</mat-label>
+  <input matInput #txtName>
+</mat-form-field>
+<input matInput #txtAttribute value="{{selectedAttribute}}" style="display: none;">
+<button mat-raised-button class="btn" color="primary" (click)="create(txtName, txtAttribute)">Create Attribute</button>

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, Spinnertype } from 'src/app/base/base/base.component';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { LanguageService } from 'src/app/services/common/language.service';
 import { UserAuthService } from 'src/app/services/common/models/user-auth-service.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 
@@ -19,8 +20,10 @@ export class UpdatePasswordComponent extends BaseComponent {
     private userAuthService: UserAuthService,
     private activatedRoute: ActivatedRoute,
     private alertify: AlertifyService,
-    private userService: UserService) {
+    private userService: UserService,
+    private languageService: LanguageService) {
     super(spinner);
+    this.languageService.setDefaultLanguage();
   }
   
   state: any;

@@ -33,8 +33,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private productService: ProductService,
     private categoryService: CategoryService,
     private httpClient: HttpClient,
-    private jsonService: JsonService) {
-    this.languageService.setLanguage();
+    private jsonService: JsonService) { 
+      this.languageService.setDefaultLanguage();
+  }
+
+  setLanguage(language: string) {
+    this.languageService.useLanguage(language);
   }
 
   async ngAfterViewInit(){

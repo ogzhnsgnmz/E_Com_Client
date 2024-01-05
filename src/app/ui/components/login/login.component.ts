@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, Spinnertype } from 'src/app/base/base/base.component';
 import { AuthService } from 'src/app/services/common/auth.service';
+import { LanguageService } from 'src/app/services/common/language.service';
 import { UserAuthService } from 'src/app/services/common/models/user-auth-service.service';
 
 @Component({
@@ -17,9 +18,11 @@ export class LoginComponent extends BaseComponent implements OnInit  {
     private activatedRoute: ActivatedRoute, 
     private router: Router,
     private authService: AuthService,
-    private socialAuthService: SocialAuthService) 
+    private socialAuthService: SocialAuthService,
+    private languageService: LanguageService) 
   {
     super(spinner)
+    this.languageService.setDefaultLanguage();
     socialAuthService.authState.subscribe(async ( user: SocialUser) => {
       this.ShowSpinner(Spinnertype.BallAtom);
       switch (user.provider) {

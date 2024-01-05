@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsComponent } from './products.component';
-import { ListComponent } from './list/list.component';
+import { CommentComponent } from './comment.component';
 import { RouterModule } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
@@ -11,13 +10,12 @@ import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    ProductsComponent,
-    ListComponent
+    CommentComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:"", component: ProductsComponent}
+      {path:"", component: CommentComponent}
     ]),
     TranslateModule.forRoot({
       loader: {
@@ -28,4 +26,4 @@ import { HttpClient } from '@angular/common/http';
     })
   ]
 })
-export class ProductsModule { }
+export class CommentModule { }
