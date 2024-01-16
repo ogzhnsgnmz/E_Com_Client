@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, Spinnertype } from 'src/app/base/base/base.component';
@@ -7,6 +7,8 @@ import { Create_Basket_Item } from 'src/app/contracts/basket/create_basket_item'
 import { List_Brand } from 'src/app/contracts/brand/list_brand';
 import { List_Product } from 'src/app/contracts/list_product';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { ConfigService } from 'src/app/services/common/config.service';
+import { JqueryService } from 'src/app/services/common/jquery.service';
 import { LanguageService } from 'src/app/services/common/language.service';
 import { BasketService } from 'src/app/services/common/models/basket.service';
 import { BrandService } from 'src/app/services/common/models/brand.service';
@@ -20,7 +22,7 @@ import { CustomToastrService, TaostrMessageType, ToastrPosition } from 'src/app/
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent extends BaseComponent implements OnInit {
+export class ProductsComponent extends BaseComponent implements OnInit, AfterViewInit {
 
   categories: any;
 
@@ -31,11 +33,15 @@ export class ProductsComponent extends BaseComponent implements OnInit {
     spinner: NgxSpinnerService,
     private customToastrService: CustomToastrService,
     private categoryService: CategoryService,
-    private languageService: LanguageService,
     private brandService: BrandService,
-    private alertifyService: AlertifyService) {
+    private alertifyService: AlertifyService,
+    private jqueryService: JqueryService,
+    private configService: ConfigService) {
     super(spinner)
-    this.languageService.setDefaultLanguage();
+  }
+
+  async ngAfterViewInit(){
+    this.jqueryService.ngAfterViewInit();
   }
 
   currentBrand: string;
@@ -47,6 +53,7 @@ export class ProductsComponent extends BaseComponent implements OnInit {
   pageSize: number = 12;
   pageList: number[] = [];
   brands: { datas: List_Brand[] };
+  private sevenDays: number;
 
   allProducts: List_Product[];
   brandProducts: List_Product[];
@@ -67,6 +74,9 @@ export class ProductsComponent extends BaseComponent implements OnInit {
       }
     );
     await this.getBands();
+    this.configService.getConfig().subscribe((config) => {
+      this.sevenDays = config.hotThreshold;
+    });
   }
 
   async getBands(){
@@ -75,6 +85,14 @@ export class ProductsComponent extends BaseComponent implements OnInit {
       messageType: MessageType.Error,
       position: Position.TopRight
     }))
+  }
+
+  isHotProduct(createdDate: Date): boolean {
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - this.sevenDays);
+
+    const isHot = new Date(createdDate) >= sevenDaysAgo;
+    return isHot;
   }
 
   async getProducts(currentCategory: string, currentPageNo: number){
@@ -93,13 +111,14 @@ export class ProductsComponent extends BaseComponent implements OnInit {
         })
         const listProduct : List_Product = {
           id: p.id,
-          createdDate: p.createdDate,
-          imagePath: p.productImageFiles.length ? p.productImageFiles.find(p => p.showcase).path: "",
+          createDate: p.createDate,
+          imagePath: p.productImageFiles.length > 0 ? p.productImageFiles.find(p=>p.path).path : "",
           name: p.name,
           price: p.price,
           stock: p.stock,
-          updatedDate: p.updatedDate,
-          productImageFiles: p.productImageFiles
+          updateDate: p.updateDate,
+          productImageFiles: p.productImageFiles,
+          commentCount: p.commentCount
         }
         return listProduct;
       });
@@ -136,13 +155,14 @@ export class ProductsComponent extends BaseComponent implements OnInit {
         })
         const listProduct : List_Product = {
           id: p.id,
-          createdDate: p.createdDate,
-          imagePath: p.productImageFiles.length ? p.productImageFiles.find(p => p.showcase).path: "",
+          createDate: p.createDate,
+          imagePath: "",
           name: p.name,
           price: p.price,
           stock: p.stock,
-          updatedDate: p.updatedDate,
-          productImageFiles: p.productImageFiles
+          updateDate: p.updateDate,
+          productImageFiles: p.productImageFiles,
+          commentCount: p.commentCount
         }
         return listProduct;
       });

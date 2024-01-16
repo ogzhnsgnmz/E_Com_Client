@@ -1,14 +1,12 @@
-<mat-list role="list">
-    <a mat-list-item role="listitem" routerLink="/admin">Dashboard</a>
-    <a mat-list-item role="listitem" routerLink="products">Products</a>
-    <a mat-list-item role="listitem" routerLink="categories">Categories</a>
-    <a mat-list-item role="listitem" routerLink="brands">Brands</a>
-    <a mat-list-item role="listitem" routerLink="comments">Comments</a>
-    <a mat-list-item role="listitem" routerLink="attributes">Attributes</a>
-    <a mat-list-item role="listitem" routerLink="sizes">Sizes</a>
-    <a mat-list-item role="listitem" routerLink="orders">Orders</a>
-    <a mat-list-item role="listitem" routerLink="authorize-menu">Authorize Menu</a>
-    <a mat-list-item role="listitem" routerLink="roles">Roles</a>
-    <a mat-list-item role="listitem" routerLink="users">Users</a>
-    <a mat-list-item role="listitem" routerLink="">Siteyi Gör</a>
+<mat-list role="list" class="sidebar">
+  <a mat-button routerLink="/admin" class="example-flex-container" [class.active]="item === ''" style="margin-top: -8px;">Dashboard</a>
+  <a mat-button routerLink="products" class="example-flex-container" [class.active]="item === 'products'">Products</a>
+  <a mat-button routerLink="categories" class="example-flex-container" [class.active]="item === 'categories'">Categories</a>
+  <a mat-button routerLink="brands" class="example-flex-container" [class.active]="item === 'brands'">Brands</a>
+  <a mat-button routerLink="attributes" class="example-flex-container" [class.active]="item === 'attributes'">Attributes</a>
+  <a mat-button routerLink="comments" class="example-flex-container" [class.active]="item === 'comments'">Comments</a>
+  <a mat-button routerLink="orders" class="example-flex-container" [class.active]="item === 'orders'">Orders</a>
+  <a mat-button routerLink="users" class="example-flex-container" [class.active]="item === 'users'">Users</a>
+  <a mat-button routerLink="roles" class="example-flex-container" [class.active]="item === 'roles'">Roles</a>
+  <a mat-button routerLink="authorize-menu" class="example-flex-container" [class.active]="item === 'authorize-menu'">Authorize Menu</a>
   </mat-list>  

@@ -7,7 +7,5 @@ import { LanguageService } from 'src/app/services/common/language.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  constructor(private languageService: LanguageService) {
-    this.languageService.setDefaultLanguage();
-  }
+
 }

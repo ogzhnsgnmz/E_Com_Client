@@ -14,10 +14,8 @@ export class PasswordResetComponent extends BaseComponent {
 
   constructor(spinner:NgxSpinnerService,
     private userAuthService: UserAuthService,
-    private alertifyService: AlertifyService,
-    private languageService: LanguageService){
+    private alertifyService: AlertifyService){
     super(spinner)
-    this.languageService.setDefaultLanguage();
   }
 
   passwordReset(email: string) {

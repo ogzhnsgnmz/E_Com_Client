@@ -74,7 +74,7 @@
 .footer-widget .widget-body ul li a:hover,
 .footer-widget .widget-body ul li a:before,
 .footer-bottom-wrap .copyright-text p a {
-    color: #d8373e !important;
+    color: #673AB7 !important;
 }
 
 /*----- theme color css end ----*/
@@ -129,7 +129,7 @@
 .price-range-wrap .price-range.ui-widget-content .ui-slider-handle,
 .layout-changer li button:hover,
 .layout-changer li button.active {
-    background-color: #d8373e !important;
+    background-color: #673AB7 !important;
 }
 
 /*----- background color css end ----*/
@@ -166,21 +166,21 @@
 .pro-nav .slick-slide.slick-current img,
 .layout-changer li button,
 .comment-section ul li .comment-body .reply-btn a {
-    border-color: #d8373e !important;
+    border-color: #673AB7 !important;
 }
 
 .bdr-bottom1 {
-    border-bottom-color: #d8373e !important;
+    border-bottom-color: #673AB7 !important;
 }
 
 .tooltip.bs-tooltip-top .arrow:before,
 .product-list-item .product-list-content .pricebox {
-    border-top-color: #d8373e !important;
+    border-top-color: #673AB7 !important;
 }
 
 .tooltip.bs-tooltip-left .arrow:before,
 .blog-item .blog-content .blog-details blockquote {
-    border-left-color: #d8373e !important;
+    border-left-color: #673AB7 !important;
 }
 
 /*----- border color css end ----*/
@@ -190,5 +190,5 @@
 .product-details-des .action_link a.buy-btn i,
 .product-details-des .action_link a.buy-btn:hover i,
 .footer-top-wrapper .newsletter__wrap .newsletter__box form button:hover {
-    background-color: #b8242a !important;
+    background-color: #572F9C !important;
 }

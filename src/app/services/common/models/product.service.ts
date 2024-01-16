@@ -124,7 +124,7 @@ export class ProductService {
             errorCallBack(errorResponse.message);
         }
         return Promise.reject(errorResponse);
-    }
+  }
 }
 
   

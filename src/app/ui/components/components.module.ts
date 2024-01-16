@@ -6,14 +6,18 @@ import { RegisterModule } from './register/register.module';
 import { BasketsModule } from './baskets/baskets.module';
 import { PasswordResetModule } from './password-reset/password-reset.module';
 import { UpdatePasswordModule } from './update-password/update-password.module';
-import { AboutUsModule } from './about-us/about-us.module';
+import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { ProductDetailModule } from './product-detail/product-detail.module';
+import { ContactModule } from './contact/contact.module';
+import { PreinformationComponent } from './preinformation/preinformation.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PreinformationComponent
+  ],
   imports: [
     CommonModule,
     ProductsModule,
@@ -22,7 +26,8 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
     BasketsModule,
     PasswordResetModule,
     UpdatePasswordModule,
-    AboutUsModule,
+    ContactModule,
+    AboutModule,
     HomeModule,
     ProductDetailModule
   ],

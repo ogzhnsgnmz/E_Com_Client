@@ -25,6 +25,15 @@ export class AuthService {
   get isAuthenticated(): boolean {
     return _isAuthenticated;
   }
+
+  getCurrentUserName(): string | null {
+    if (this.isAuthenticated) {
+      const token: string = localStorage.getItem("accessToken");
+      const decodeToken = this.jwtHelper.decodeToken(token);
+      return decodeToken?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] || null;
+    }
+    return null;
+  }
 }
 
 export let _isAuthenticated: boolean;

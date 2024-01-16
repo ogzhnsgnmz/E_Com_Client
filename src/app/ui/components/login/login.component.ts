@@ -18,11 +18,9 @@ export class LoginComponent extends BaseComponent implements OnInit  {
     private activatedRoute: ActivatedRoute, 
     private router: Router,
     private authService: AuthService,
-    private socialAuthService: SocialAuthService,
-    private languageService: LanguageService) 
+    private socialAuthService: SocialAuthService) 
   {
     super(spinner)
-    this.languageService.setDefaultLanguage();
     socialAuthService.authState.subscribe(async ( user: SocialUser) => {
       this.ShowSpinner(Spinnertype.BallAtom);
       switch (user.provider) {

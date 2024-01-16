@@ -23,9 +23,8 @@ declare var $: any;
 export class BasketsComponent extends BaseComponent implements OnInit {
   constructor(spinner: NgxSpinnerService, private basketService: BasketService, 
     private orderService: OrderService, private toastrService: CustomToastrService,
-    private router: Router, private dialogService: DialogService, private languageService: LanguageService) {
+    private router: Router, private dialogService: DialogService) {
     super(spinner)
-    this.languageService.setDefaultLanguage();
   }
 
   subPrice: number = 0;
@@ -54,6 +53,9 @@ export class BasketsComponent extends BaseComponent implements OnInit {
     this.subPrice = this.basketItems.reduce((total, item) => total + (item.price) * item.quantity, 0);
     this.kdv = this.subPrice*18/100
     this.totalPrice = this.subPrice+this.kdv+this.kargo
+    this.basketItems.forEach(item => {
+      item.itemTotalPrice = item.price * item.quantity;
+    });
   }
 
   async changeQuentity(object: any){
@@ -82,28 +84,6 @@ export class BasketsComponent extends BaseComponent implements OnInit {
         await this.basketService.remove(basketItemId);
         $("." + basketItemId).fadeOut(500, () => this.HideSpinner(Spinnertype.BallAtom));
         $("#basketModal").modal("show");
-      }
-    });
-    this.updateTotalPrice();
-  }
-
-  async shoppingComplete(){
-    $("#basketModal").modal("hide");
-    this.dialogService.openDialog({
-      componentType: ShoppingCompleteDialogComponent,
-      data: ShoppingCompleteState.Yes,
-      afterClosed: async()=>{
-        this.ShowSpinner(Spinnertype.BallAtom);
-        const order: Create_Order = new Create_Order();
-        order.address = "Deneme";
-        order.description = "deneme";
-        await this.orderService.create(order);
-        this.HideSpinner(Spinnertype.BallAtom);
-        this.toastrService.message("Sipariş alınmıştır!", "Sipariş oluşturuldu!", {
-          messageType: TaostrMessageType.Info,
-          position: ToastrPosition.TopRight
-        });
-        this.router.navigate(["/"]);
       }
     });
     this.updateTotalPrice();

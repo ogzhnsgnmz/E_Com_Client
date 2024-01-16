@@ -35,6 +35,51 @@
                                   </div>
                               </div>
                           </div>
+                          <hr>
+                        <h3>{{ "Address" | translate }}</h3>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="single-input-item">
+                                    <input type="text" formControlName="province" class="form-control" id="province" placeholder="İl" [ngClass]="{'is-invalid': submitted && component.province.errors}" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="single-input-item">
+                                    <input type="text" formControlName="district" class="form-control" id="district" placeholder="İlçe" [ngClass]="{'is-invalid': submitted && component.district.errors}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="single-input-item">
+                                    <input type="text" formControlName="neighborhood" class="form-control" id="neighborhood" placeholder="Mahalle" [ngClass]="{'is-invalid': submitted && component.neighborhood.errors}" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="single-input-item">
+                                    <input type="text" formControlName="street" class="form-control" id="street" placeholder="Sokak" [ngClass]="{'is-invalid': submitted && component.street.errors}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="single-input-item">
+                                    <input type="text" formControlName="number" class="form-control" id="number" placeholder="Numara" [ngClass]="{'is-invalid': submitted && component.number.errors}" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="single-input-item">
+                                    <input type="text" formControlName="postalCode" class="form-control" id="postalCode" placeholder="Posta Kodu" [ngClass]="{'is-invalid': submitted && component.postalCode.errors}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="single-input-item">
+                                    <input type="text" formControlName="title" class="form-control" id="title" placeholder="Adres Başlığı" [ngClass]="{'is-invalid': submitted && component.title.errors}" required>
+                                </div>
+                            </div>
+                        </div>
                           <div class="single-input-item">
                               <button type="submit" class="sqr-btn">{{ "Register" | translate }}</button>
                           </div>

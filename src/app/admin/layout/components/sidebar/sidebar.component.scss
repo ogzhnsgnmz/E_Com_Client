@@ -1,0 +1,18 @@
+.sidebar{
+}
+section {
+    display: table;
+}
+  
+.example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 25px 15px;
+    line-height: 0px;
+    border-radius: 0px;
+}
+
+.active{
+    background-color: #E4DEF0;
+}

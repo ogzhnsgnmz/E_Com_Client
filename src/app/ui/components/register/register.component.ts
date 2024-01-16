@@ -19,10 +19,8 @@ export class RegisterComponent extends BaseComponent implements OnInit{
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
     private toastrService: CustomToastrService,
-    spinner: NgxSpinnerService,
-    private languageService: LanguageService) {
+    spinner: NgxSpinnerService) {
     super(spinner)
-    this.languageService.setDefaultLanguage();
   }
 
   frm!: FormGroup;
@@ -48,6 +46,34 @@ export class RegisterComponent extends BaseComponent implements OnInit{
         Validators.required
       ]],
       passwordConfirm: ["",
+      [
+        Validators.required
+      ]],
+      province: ["",
+      [
+        Validators.required
+      ]],
+      title: ["",
+      [
+        Validators.required
+      ]],
+      district: ["",
+      [
+        Validators.required
+      ]],
+      neighborhood: ["",
+      [
+        Validators.required
+      ]],
+      street: ["",
+      [
+        Validators.required
+      ]],
+      number: ["",
+      [
+        Validators.required
+      ]],
+      postalCode: ["",
       [
         Validators.required
       ]]

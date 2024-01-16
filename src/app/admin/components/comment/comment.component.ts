@@ -24,7 +24,7 @@ export class CommentComponent extends BaseComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['name', 'edit', 'delete'];
+  displayedColumns: string[] = ['userName', 'message', 'edit', 'delete'];
   dataSource: MatTableDataSource<List_Comment> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

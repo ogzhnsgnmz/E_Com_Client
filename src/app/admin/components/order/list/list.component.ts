@@ -29,7 +29,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   async getOrders() {
-    this.ShowSpinner(Spinnertype.ballScaleMultiple);
+    this.ShowSpinner(Spinnertype.BallAtom);
 
     const allOrders: { totalOrderCount: number; orders: List_Order[] } = await this.orderService.getAllOrders(this.paginator ? this.paginator.pageIndex : 0, this.paginator ? this.paginator.pageSize : 5, () => this.HideSpinner(Spinnertype.BallAtom), (errorMessage: any) => {
       this.alertifyService.message(errorMessage.message, {

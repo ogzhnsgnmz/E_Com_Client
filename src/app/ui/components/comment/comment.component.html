@@ -3,52 +3,45 @@
         <div class="col-md-4">
             <div class="product-large-slider mb-20 slick-arrow-style_2">
                 <div class="pro-large-img img-zoom" id="img1">
-                    <img src="assets/img/product/product-details-img1.jpg" alt="" />
+                    <img *ngIf="!productImage[0]" src="https://picsum.photos/200/200">
+                    <img *ngIf="productImage[0]" src="{{productImage[0].path}}">
                 </div>
             </div>
             <div class="product-details-des mt-md-34 mt-sm-34">
-                <h3><a href="product-details.html">external product 12</a></h3>
-                <div class="ratings">
-                    <span class="good"><i class="fa fa-star"></i></span>
-                    <span class="good"><i class="fa fa-star"></i></span>
-                    <span class="good"><i class="fa fa-star"></i></span>
-                    <span class="good"><i class="fa fa-star"></i></span>
-                    <span><i class="fa fa-star"></i></span>
-                    <div class="pro-review">
-                        <span>1 review(s)</span>
-                    </div>
-                </div>
-                <div class="availability mt-10">
-                    <h5>Availability:</h5>
-                    <span>1 in stock</span>
-                </div>
+                <h3><a href="product-details.html">
+                    {{product.name.split(' ')[0]}} <span style="font-weight: normal;">{{product.name.split(' ').slice(1).join(' ')}}</span> 
+                </a></h3>
                 <div class="pricebox">
-                    <span class="regular-price">$160.00</span>
+                    <span class="regular-price">{{ product.price | currency:'TRY':'symbol-narrow':'1.2-2' }}</span>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br>
-                Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
-                <div class="quantity-cart-box d-flex align-items-center mt-20">
-                    <div class="quantity">
-                        <div class="pro-qty"><input type="text" value="1"></div>
-                    </div>
+                <p>{{product.description}}</p>
+                <div class="quantity-cart-box d-flex align-items-center">
                     <div class="action_link">
-                        <a class="buy-btn" href="#">add to cart<i class="fa fa-shopping-cart"></i> </a>
+                        <a class="buy-btn" href="#">Sepete Ekle<i class="fa fa-shopping-cart"></i></a>
                     </div>
+                </div>
+                <div>
+                    <p style="float:left; color: #00a821; font-weight: bold; padding-right: 3px; font-size: 12px;">
+                        Hızlı Teslimat:
+                    </p>
+                    <p style="float:left; font-size: 12px;">
+                        2 gün içinde kargoda
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
             <h2>Yorumlar</h2>
             <div class="review-form">
+                <h4>
+                    Ortalama Puan: {{ productCommentLists.avrRating }}
+                    <span class="good" *ngFor="let _ of range(productCommentLists.avrRating)"><i class="fa fa-star"></i></span>
+                </h4>
                 <h5>Bu ürün için toplam {{productCommentLists.totalCount}} yorum var</h5>
-                <div class="total-reviews" *ngFor="let comment of productCommentLists?.datas">
+                <div class="total-reviews" *ngFor="let comment of productCommentLists.datas">
                     <div class="review-box">
                         <div class="ratings">
-                            <span class="good"><i class="fa fa-star"></i></span>
-                            <span class="good"><i class="fa fa-star"></i></span>
-                            <span class="good"><i class="fa fa-star"></i></span>
-                            <span class="good"><i class="fa fa-star"></i></span>
-                            <span><i class="fa fa-star"></i></span>
+                            <span class="good" *ngFor="let _ of range(comment.ratings)"><i class="fa fa-star"></i></span>
                         </div>
                         <div class="post-author">
                             <p><span>{{ comment.userName }} -</span> {{ comment.createDate | date: 'medium' }}</p>
@@ -78,7 +71,7 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button class="sqr-btn" (click)="create()">Continue</button>
+                    <button class="sqr-btn" (click)="create()">Yorumu Gönder</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z1">
     <table mat-table [dataSource]="dataSource">
   
       <ng-container matColumnDef="userName">
@@ -24,14 +24,14 @@
       </ng-container>
   
       <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef> </th>
+        <th mat-header-cell *matHeaderCellDef> Role </th>
         <td mat-cell *matCellDef="let element">
           <button mat-button color="primary" (click)="assignRole(element.id)">Rol Ata</button>
         </td>
       </ng-container>
   
       <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef width="30">  </th>
+        <th mat-header-cell *matHeaderCellDef width="30"> Delete </th>
         <td mat-cell *matCellDef="let element"
             appDelete
             [id]="element.id"

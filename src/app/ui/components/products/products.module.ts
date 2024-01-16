@@ -16,16 +16,10 @@ import { HttpClient } from '@angular/common/http';
   ],
   imports: [
     CommonModule,
+    TranslateModule,
     RouterModule.forChild([
       {path:"", component: ProductsComponent}
-    ]),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    ])
   ]
 })
 export class ProductsModule { }

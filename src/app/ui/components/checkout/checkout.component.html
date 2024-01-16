@@ -5,7 +5,7 @@
                 <!-- Checkout Login Coupon Accordion Start -->
                 <div class="checkoutaccordion" id="checkOutAccordion">
                     <div class="card">
-                        <h3>Sepete geri dönmek isitiyor musunuz? <span data-toggle="collapse" data-target="#logInaccordion">Dönmek için tıklayın</span></h3>
+                        <h3>Sepete geri dönmek isitiyor musunuz? <span data-toggle="collapse" data-target="#logInaccordion"><a routerLink="../basket">Dönmek için tıklayın</a></span></h3>
 
                         <div id="logInaccordion" class="collapse" data-parent="#checkOutAccordion">
                             <div class="card-body">
@@ -81,7 +81,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="single-input-item">
-                                        <label for="phone">Phone</label>
+                                        <label for="phone" class="required">Phone</label>
                                         <input type="text" id="phone"  placeholder="Phone" />
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                 <div class="col-md-6">
                                     <div class="single-input-item">
                                         <label for="town" class="required">İl</label>
-                                        <input type="text" id="town"  placeholder="" required />
+                                        <input type="text" id="town"  placeholder="" value="{{product.province}}" required />
                                     </div>
                                 </div>
                             </div>
@@ -98,14 +98,14 @@
                                 <div class="col-md-6">
                                     <div class="single-input-item">
                                         <label for="phone" class="required">İlçe</label>
-                                        <input type="text" id="phone"  placeholder="" required  />
+                                        <input type="text" id="phone"  placeholder="" value="{{product.district}}" required  />
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="single-input-item">
                                         <label for="town" class="required">Mahalle</label>
-                                        <input type="text" id="town"  placeholder="" required />
+                                        <input type="text" id="town"  placeholder="" value="{{product.neighborhood}}" required />
                                     </div>
                                 </div>
                             </div>
@@ -114,20 +114,52 @@
                                 <div class="col-md-6">
                                     <div class="single-input-item">
                                         <label for="phone" class="required">Adres</label>
-                                        <input type="text" id="phone"  placeholder="" required  />
+                                        <input type="text" id="phone"  placeholder="" value="{{product.street}}, {{product.number}}, {{product.postalCode}}" required  />
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="single-input-item">
                                         <label for="town" class="required">Adres Başlığı</label>
-                                        <input type="text" id="town"  placeholder="" required />
+                                        <input type="text" id="town"  placeholder="" value="{{product.title}}" required />
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                <br><br>
+                <div class="checkout-billing-details-wrap">
+                    <h2>Ödeme Bilgisi</h2>
+                    <div class="billing-form-wrap">
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="single-input-item">
+                                        <label for="cardNumber" class="">Kart Numarası</label>
+                                        <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="expiryDate" class="">Son Kullanma Tarihi</label>
+                                        <input type="text" id="expiryDate" placeholder="09/24" required />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="single-input-item">
+                                        <label for="cvCode" class="">CV Code</label>
+                                        <input type="text" id="cvCode"  placeholder="000" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br><br>
             </div>
 
             <!-- Order Summary Details -->
@@ -135,10 +167,10 @@
                 <div class="order-summary-details mt-md-26 mt-sm-26">
                     <div class="order-summary-content mb-sm-4">
                         <div class="summary-footer-area">
-                            <button type="submit" class="check-btn sqr-btn">Siparişi Tamamla</button><br><br>
+                        <button type="submit" class="check-btn sqr-btn btn-block" (click)="shoppingComplete()">Siparişi Tamamla</button><br><br>
                             <div class="order-payment-method custom-control custom-checkbox mb-14">
                                 <input type="checkbox" class="custom-control-input" id="terms" required />
-                                <label class="custom-control-label" for="terms">Ön Bilgilendirme Koşulları'nı ve Mesafeli Satış Sözleşmesi'ni okudum, onaylıyorum.</label>
+                                <label class="custom-control-label" for="terms"><a routerLink="../preinformation" target="_blank">Ön Bilgilendirme Koşulları'nı ve Mesafeli Satış Sözleşmesi'ni okudum, onaylıyorum.</a></label>
                             </div>
                         </div>
                         <!-- Order Summary Table -->
@@ -157,14 +189,16 @@
                                             Kargo
                                         </td>
                                         <td class="text-right">
-                                            <strong>{{ receivedData.totalPrice }}</strong><br>
-                                            <strong>{{ receivedData.totalPrice }}</strong><br>
-                                            <strong>{{ receivedData.totalPrice }}</strong>
+                                            <strong>{{ subPrice | currency:'TRY':'symbol-narrow':'1.2-2' }}</strong><br>
+                                            <strong>{{ kdv| currency:'TRY':'symbol-narrow':'1.2-2' }}</strong><br>
+                                            <strong>{{ kargo | currency:'TRY':'symbol-narrow':'1.2-2' }}</strong>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Toplam</td>
-                                        <td stlye="color:red" class="text-right"><strong>{{ receivedData.totalPrice }}</strong></td>
+                                        <td stlye="color:red" class="text-right"><strong>
+                                            {{ totalPrice | currency:'TRY':'symbol-narrow':'1.2-2' }}
+                                        </strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -172,8 +206,29 @@
                         <!-- Order Payment Method -->
                     </div>
                     <div class="summary-footer-area">
-                        <button type="submit" class="check-btn sqr-btn btn-block">Siparişi Tamamla</button>
+                        <button type="submit" class="check-btn sqr-btn btn-block" (click)="shoppingComplete()">Siparişi Tamamla</button>
                     </div><br>
+                </div>
+
+                <div class="order-payment-method"><div class="single-payment-method show">
+                    <div class="payment-method-name">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="cashon" name="paymentmethod" value="cash" class="custom-control-input" />
+                            <label class="custom-control-label" for="cashon">Kart ile öde</label>
+                        </div>
+                    </div>
+                    <div class="payment-method-details" data-method="cash">
+                        <p>Bu Özellik şuanda devre dışı</p>
+                    </div>
+                </div>
+                    <div class="single-payment-method">
+                        <div class="payment-method-name">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="directbank" name="paymentmethod" value="bank" class="custom-control-input" checked  />
+                                <label class="custom-control-label" for="directbank">Kapıda öde</label>
+                            </div>
+                        </div>
+                    </div>   
                 </div>
             </div>
         </div>

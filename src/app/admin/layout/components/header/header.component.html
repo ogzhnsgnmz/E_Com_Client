@@ -1,3 +1,13 @@
-<mat-toolbar color="primary">
-    <span>E-Com Panel</span>
+<p>
+<mat-toolbar class="menu" color="primary">
+    <button mat-flat-button color="primary">Admin Paneli</button>
+    <button mat-flat-button color="primary" routerLink="">Siteye Dön</button>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>logout</mat-icon>
+    </button>
 </mat-toolbar>
+</p>
+<div>
+<app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
+</div>

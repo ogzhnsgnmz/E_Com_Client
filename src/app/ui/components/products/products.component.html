@@ -41,121 +41,99 @@
                 <div class="shop-banner img-full">
                     <img src="assets/img/banner/banner_static1.jpg" alt="">
                 </div>
+                
                 <!-- product view wrapper area start -->
-                <div class="shop-product-wrapper pt-34">
-                    <!-- shop product top wrap start -->
-                    <div class="shop-top-bar">
-                        <div class="row">
-                            <div class="col-lg-7 col-md-6">
-                                <div class="top-bar-left">
-                                    <div class="product-view-mode mr-70 mr-sm-0">
-                                        <a class="active" href="#" data-target="grid"><i class="fa fa-th"></i></a>
-                                        <a href="#" data-target="list"><i class="fa fa-list"></i></a>
+                <div class="row">
+                    <div class="shop-product-wrapper pt-34">
+                        <!-- product item start -->
+                        <h4 class="pb-20">Bu kategoride {{totalProductCount}} ürün bulundu</h4>
+                        <div class="shop-product-wrap grid row" *ngIf="allProducts !== null">
+                            <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of allProducts">
+                                <!-- product single grid item start -->
+                                <div class="product-item fix mb-30">
+                                    <div class="product-thumb">
+                                        <a href="product/{{product.id}}">
+                                            <img *ngIf="!product.productImageFiles.length" src="../../../../assets/default-product.png" class="img-pri" alt="">
+                                            <img *ngIf="!product.productImageFiles.length" src="../../../../assets/default-product.png" class="img-sec" alt="">
+                                            <img *ngIf="product.productImageFiles.length" src="{{baseUrl.url}}/{{product.imagePath}}" class="img-pri" alt="">
+                                            <img *ngIf="product.productImageFiles.length" src="{{baseUrl.url}}/{{product.imagePath}}" class="img-sec" alt="">
+                                        </a>
+                                        <div class="product-label" *ngIf="isHotProduct(product.createDate)">
+                                            <span>{{ "Hot" | translate }}</span>
+                                          </div>
+                                        <div class="product-action-link">
+                                            <a (click)="addToBasket(product)" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="product-amount">
-                                        <p>{{ "ProductAmount" | translate }}</p>
+                                    <div class="product-content">
+                                        <h4 style="border:none"><a routerLink="product-detail/{{product.id}}">
+                                            {{product.name.split(' ')[0]}} <span style="font-weight: normal;">{{product.name.split(' ').slice(1).join(' ')}}</span> 
+                                        </a></h4>
+                                        <div class="pro-review" style="font-size: 10px;">
+                                            <a routerLink="../../../product/{{product.id}}/comments"><span>{{ product.commentCount }} {{ "Reviews" | translate }}</span></a>
+                                        </div>
+                                        <div class="pricebox">
+                                            <span class="regular-price">{{ product.price | currency:'TRY':'symbol-narrow':'1.2-2' }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-5 col-md-6">
-                                <div class="top-bar-right">
-                                    <div class="product-short">
-                                        <p>{{ "SortBy" | translate }} : </p>
-                                        <select class="nice-select" name="sortby">
-                                            <option value="trending">{{ "Relevance" | translate }}</option>
-                                            <option value="sales">{{ "Name" | translate }} {{ "A-Z" | translate }}</option>
-                                            <option value="sales">{{ "Name" | translate }} {{ "Z-A" | translate }}</option>
-                                            <option value="rating">{{ "Price" | translate }} (Low &gt; {{ "High" | translate }})</option>
-                                            <option value="date">{{ "Rating" | translate }} ({{ "Lowest" | translate }})</option>
-                                            <option value="price-asc">{{ "Model" | translate }} {{ "A-Z" | translate }}</option>
-                                            <option value="price-asc">{{ "Model" | translate }} {{ "Z-A" | translate }}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                                <!-- product single grid item end -->
                         </div>
-                    </div>
-                    <!-- shop product top wrap start -->
+                        <!-- product item end -->
 
-                    <!-- product item start -->
-                    <div class="shop-product-wrap grid row" *ngIf="allProducts !== null">
-                        <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of allProducts">
-                            <!-- product single grid item start -->
-                            <div class="product-item fix mb-30">
-                                <div class="product-thumb">
-                                    <a href="product/{{product.id}}">
-                                        <img *ngIf="!product.productImageFiles.length" src="https://picsum.photos/200/200" class="img-pri" alt="">
-                                        <img *ngIf="product.productImageFiles.length" src="https://picsum.photos/200/200" class="img-sec" alt="">
-                                    </a>
-                                    <div class="product-label">
-                                        <span>{{ "Hot" | translate }}</span>
+                        <!-- product item start -->
+                        <div class="shop-product-wrap grid row" *ngIf="brandProducts !== null">
+                            <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of brandProducts">
+                                <!-- product single grid item start -->
+                                <div class="product-item fix mb-30">
+                                    <div class="product-thumb">
+                                        <a href="product/{{product.id}}">
+                                            <img src="../../../../assets/default-product.png" class="img-pri" alt="">
+                                            <img src="../../../../assets/default-product.png" class="img-sec" alt="">
+                                        </a>
+                                        <div class="product-label">
+                                            <span>{{ "Hot" | translate }}</span>
+                                        </div>
+                                        <div class="product-action-link">
+                                            <a (click)="addToBasket(product)" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="product-action-link">
-                                        <a (click)="addToBasket(product)" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+                                    <div class="product-content">
+                                        <h4><a routerLink="product-detail/{{product.id}}">{{product.name}}</a></h4>
+                                        <div class="pricebox">
+                                            <span class="regular-price">{{product.price | currency}}</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="product-content">
-                                    <h4><a routerLink="product-detail/{{product.id}}">{{product.name}}</a></h4>
-                                    <div class="pricebox">
-                                        <span class="regular-price">{{product.price | currency}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single grid item end -->
+                                <!-- product single grid item end -->
+                        </div>
+                        <!-- product item end -->
                     </div>
-                    <!-- product item end -->
-
-                    <!-- product item start -->
-                    <div class="shop-product-wrap grid row" *ngIf="brandProducts !== null">
-                        <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of brandProducts">
-                            <!-- product single grid item start -->
-                            <div class="product-item fix mb-30">
-                                <div class="product-thumb">
-                                    <a href="product/{{product.id}}">
-                                        <img src="https://picsum.photos/200/200" class="img-pri" alt="">
-                                    </a>
-                                    <div class="product-label">
-                                        <span>{{ "Hot" | translate }}</span>
-                                    </div>
-                                    <div class="product-action-link">
-                                        <a (click)="addToBasket(product)" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h4><a routerLink="product-detail/{{product.id}}">{{product.name}}</a></h4>
-                                    <div class="pricebox">
-                                        <span class="regular-price">{{product.price | currency}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single grid item end -->
-                    </div>
-                    <!-- product item end -->
                 </div>
                 <!-- product view wrapper area end -->
 
                 <!-- start pagination area -->
-                <div class="paginatoin-area text-center pt-28">
-                    <div class="row">
-                        <div class="col-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="paginatoin-area text-center pt-28" style="text-align: center;">
                             <ul class="pagination-box">
                                 <li>
                                     {{currentPageNo}}/{{totalPageCount}}
                                 </li>
                                 <li>
-                                    <a class="Previous" [routerLink]="['/products', currentPageNo-1 <= 0 ? 1 : currentPageNo-1]">{{ "Previous" | translate }}</a>
+                                    <a class="Previous" [routerLink]="['/products', currentCategory, currentPageNo-1 <= 0 ? 1 : currentPageNo-1]">{{ "Previous" | translate }}</a>
                                 </li>
                                 <li class="active" *ngFor="let pageNo of pageList;" routerLinkActive="active">
-                                    <a [routerLink]="['/products', pageNo]">{{pageNo}}</a>
+                                    <a [routerLink]="['/products/', currentCategory, pageNo]">{{pageNo}}</a>
                                   </li>
                                 <li>
-                                    <a class="Next" [routerLink]="['/products', currentPageNo+1 >= totalPageCount ? totalPageCount : currentPageNo+1]">{{ "Next" | translate }}</a>
+                                    <a class="Next" [routerLink]="['/products', currentCategory, currentPageNo+1 >= totalPageCount ? totalPageCount : currentPageNo+1]">{{ "Next" | translate }}</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <!-- end pagination area -->
+                <!-- end pagination area --> 
 
             </div>
             <!-- product main wrap end -->

@@ -6,8 +6,9 @@ export class List_Product {
     stock?:string;
     price?:string;
     description?:string;
-    createdDate: Date;
-    updatedDate: Date;
+    createDate: Date;
+    updateDate: Date;
     productImageFiles?: List_Product_Image[];
     imagePath: string;
+    commentCount: string;
 }

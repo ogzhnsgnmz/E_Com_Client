@@ -20,10 +20,8 @@ export class UpdatePasswordComponent extends BaseComponent {
     private userAuthService: UserAuthService,
     private activatedRoute: ActivatedRoute,
     private alertify: AlertifyService,
-    private userService: UserService,
-    private languageService: LanguageService) {
+    private userService: UserService) {
     super(spinner);
-    this.languageService.setDefaultLanguage();
   }
   
   state: any;

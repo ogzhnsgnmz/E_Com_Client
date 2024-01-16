@@ -1,3 +1,15 @@
+<style>
+.scrollbar-container {
+    height: 100vh; /* veya başka bir yükseklik değeri */
+    overflow-y: auto;
+}
+
+.scrollbar-container.no-scroll {
+    overflow-y: hidden;
+}
+</style>
+
+<div class="scrollbar-container">
 <app-header></app-header>
     <mat-drawer-container class="admin-container">
         <mat-drawer mode="side" opened class="admin-left">
@@ -8,3 +20,4 @@
         </mat-drawer-content>
     </mat-drawer-container>
 <app-footer></app-footer>
+</div>

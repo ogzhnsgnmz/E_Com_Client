@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, Spinnertype } from 'src/app/base/base/base.component';
 import { List_Attribute } from 'src/app/contracts/attribute/List_Attribute';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { AttributeService } from 'src/app/services/common/models/attribute.service';
 import { ProductAttributeService } from 'src/app/services/common/models/product-attribute.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
   constructor(spiner: NgxSpinnerService,
     private productAttributeService: ProductAttributeService,
     private alertifyService: AlertifyService,
+    private attributeService: AttributeService,
     private route: ActivatedRoute) {
     super(spiner)
     this.getAttributes();
@@ -34,7 +36,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
 
   async getAttributes() {
     this.ShowSpinner(Spinnertype.BallAtom);
-    const allAttributes: { datas: List_Attribute[], totalCount: number } = await this.productAttributeService.getAttributes(
+    const allAttributes: { datas: List_Attribute[], totalCount: number } = await this.attributeService.getAttributes(
       this.paginator ? this.paginator.pageIndex : 0,
       this.paginator ? this.paginator.pageSize : 5,
       () => this.HideSpinner(Spinnertype.BallAtom),

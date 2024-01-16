@@ -22,6 +22,20 @@ export class ProductAttributeService {
     return await promiseData;
   }
 
+  async getProductIdAttributes(id: string, page: number, size: number, successCallBack?: () => void, errorCallBack?: (error) => void) {
+    const observable: Observable<any> = this.httpClientService.get({
+      controller: "ProductAttributes",
+      action: id,
+      queryString: `page=${page}&size=${size}`
+    });
+
+    const promiseData = firstValueFrom(observable);
+    promiseData.then(successCallBack)
+      .catch(errorCallBack);
+
+    return await promiseData;
+  }
+
   async create(productId: string, value: string, attributeId: string, successCallBack?: () => void, errorCallBack?: (error) => void) {
     const observable: Observable<any> = this.httpClientService.post({
       controller: "ProductAttributes"

@@ -54,7 +54,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
     this.ShowSpinner(Spinnertype.BallAtom);
     const allLists: { datas: List_Category[], totalCount: number } = await this.categoryService.getAllCategories(
       this.paginator ? this.paginator.pageIndex : 0,
-      this.paginator ? this.paginator.pageSize : 5,
+      this.paginator ? this.paginator.pageSize : 50,
       () => this.HideSpinner(Spinnertype.BallAtom),
       errorMessage => this.alertifyService.message(errorMessage, {
         dismissOthers: true,
@@ -92,7 +92,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
     this.ShowSpinner(Spinnertype.BallAtom);
     const allBrands: { datas: List_Brand[], totalCount: number } = await this.brandService.getBrands(
       this.paginator ? this.paginator.pageIndex : 0,
-      this.paginator ? this.paginator.pageSize : 5,
+      this.paginator ? this.paginator.pageSize : 50,
       () => this.HideSpinner(Spinnertype.BallAtom),
       errorMessage => this.alertifyService.message(errorMessage, {
         dismissOthers: true,
@@ -104,14 +104,12 @@ export class CreateComponent extends BaseComponent implements OnInit {
     this.brandDataSource = new MatTableDataSource<List_Brand>(allBrands.datas);
   }
 
-  create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement, attribute: HTMLInputElement, attributeValue: HTMLInputElement, brand: HTMLInputElement, category: HTMLInputElement, description: HTMLInputElement){
+  create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement, brand: HTMLInputElement, category: HTMLInputElement, description: HTMLInputElement){
     this.ShowSpinner(Spinnertype.BallAtom);
     const create_Product: Create_Product = new Create_Product();
     create_Product.name = name.value;
     create_Product.stock = stock.value;
     create_Product.price = price.value;
-    create_Product.attribute = attribute.value;
-    create_Product.attributeValue = attributeValue.value;
     create_Product.brand = brand.value;
     create_Product.category = category.value;
     create_Product.description = description.value;

@@ -30,7 +30,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss",
               "src/assets/css/bootstrap.min.css",
               "node_modules/alertifyjs/build/css/alertify.min.css",
@@ -39,6 +39,7 @@
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "node_modules/ngx-spinner/animations/ball-atom.css",
               "node_modules/ngx-spinner/animations/ball-spin-clockwise-fade-rotating.css",
+              "src/assets/css/fontawesome.min.css",
               "src/assets/css/font-awesome.min.css",
               "src/assets/css/helper.min.css",
               "src/assets/css/plugins.css",

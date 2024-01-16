@@ -16,13 +16,7 @@ import { HttpClient } from '@angular/common/http';
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    TranslateModule
   ],
   exports: [
     HeaderComponent,

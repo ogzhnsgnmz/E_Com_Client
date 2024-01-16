@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, Spinnertype } from 'src/app/base/base/base.component';
 import { List_Comment } from 'src/app/contracts/comment/List_Comment';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { CommentService } from 'src/app/services/common/models/comment.service';
+import { ProductService } from 'src/app/services/common/models/product.service';
 
 @Component({
   selector: 'app-comment',
@@ -13,13 +14,16 @@ import { CommentService } from 'src/app/services/common/models/comment.service';
 })
 export class CommentComponent extends BaseComponent implements OnInit {
 
-  productCommentLists: { datas: List_Comment[], totalCount: number };
+  productCommentLists: { datas: List_Comment[], totalCount: number, avrRating: number };
   productId: string;
+  product: any;
+  productImage: any;
 
   constructor(spiner: NgxSpinnerService,
     private commentService: CommentService,
     private alertifyService: AlertifyService,
-    private activetadRoute: ActivatedRoute) {
+    private activetadRoute: ActivatedRoute,
+    private productService: ProductService) {
     super(spiner)
   }
 
@@ -29,7 +33,23 @@ export class CommentComponent extends BaseComponent implements OnInit {
         this.productId = params["id"] ?? "error";
       }
     );
+    this.getProductImage();
+    this.getProduct();
     this.read();
+    
+  }
+
+  range(count: number): number[] {
+    return Array.from({ length: count }, (value, index) => index);
+  }
+
+  async getProduct() {
+    this.product = await this.productService.readById(this.productId,null,null,null);
+  }
+
+  async getProductImage(){
+    this.productImage = await this.productService.readImage(this.productId);
+    console.log(this.productImage[0]);
   }
 
   async read(){

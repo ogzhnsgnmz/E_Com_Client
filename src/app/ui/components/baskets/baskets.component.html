@@ -20,11 +20,13 @@
                           <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-img2.jpg"
                                                                       alt="Product"/></a></td>
                           <td class="pro-title"><a href="#">{{basketItem.name}}</a></td>
-                          <td class="pro-price"><span>{{basketItem.price}}</span></td>
+                          <td class="pro-price"><span>{{ basketItem.price | currency:'TRY':'symbol-narrow':'1.2-2' }}</span></td>
                           <td class="pro-quantity">
                               <input type="number" name="" [value]="basketItem.quantity" style="width:60px;" data-id="{{basketItem.basketItemId}}" (change)="changeQuentity($event)" />
                           </td>
-                          <td class="pro-subtotal"><span>{{basketItem.price}}</span></td>
+                          <td class="pro-subtotal"><span>
+                            {{ basketItem.itemTotalPrice | currency:'TRY':'symbol-narrow':'1.2-2' }}
+                        </span></td>
                           <td class="pro-remove">
                             <a href="#" data-bs-dismiss="modal" (click)="removeBasketItem(basketItem.basketItemId)"><i class="fa fa-trash-o"></i></a>
                           </td>
@@ -45,19 +47,19 @@
                           <table class="table">
                               <tr>
                                   <td>Ara Toplam</td>
-                                  <td>{{subPrice}}</td>
+                                  <td>{{ subPrice | currency:'TRY':'symbol-narrow':'1.2-2' }}</td>
                               </tr>
                               <tr>
                                   <td>Kdv</td>
-                                  <td>{{kdv}}</td>
+                                  <td>{{ kdv | currency:'TRY':'symbol-narrow':'1.2-2' }}</td>
                               </tr>
                               <tr>
                                   <td>Kargo</td>
-                                  <td>{{kargo}}</td>
+                                  <td>{{ kargo | currency:'TRY':'symbol-narrow':'1.2-2' }}</td>
                               </tr>
                               <tr class="total">
                                   <td>Toplam</td>
-                                  <td class="total-amount">{{totalPrice}}</td>
+                                  <td class="total-amount">{{ totalPrice | currency:'TRY':'symbol-narrow':'1.2-2' }}</td>
                               </tr>
                           </table>
                       </div>

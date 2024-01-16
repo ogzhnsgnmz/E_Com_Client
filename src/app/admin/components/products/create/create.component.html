@@ -1,52 +1,38 @@
 <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput #txtName>
+  <mat-label>Name</mat-label>
+  <input matInput #txtName>
 </mat-form-field>
 <mat-form-field appearance="fill">
-    <mat-label>Stock</mat-label>
-    <input matInput #txtStock>
+  <mat-label>Stock</mat-label>
+  <input matInput #txtStock>
 </mat-form-field>
 <mat-form-field appearance="fill">
-    <mat-label>Price</mat-label>
-    <input matInput #txtPrice>
+  <mat-label>Price</mat-label>
+  <input matInput #txtPrice>
 </mat-form-field>
 <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
-    <input matInput #txtDescription>
+  <mat-label>Description</mat-label>
+  <input matInput #txtDescription>
 </mat-form-field>
 <mat-form-field appearance="fill">
-  <mat-label>Brand</mat-label>
-  <mat-select [(value)]="selectedBrand">
-    <!-- Use *ngFor to iterate over categoryDataSource and populate options -->
-    <mat-option *ngFor="let Brand of brandDataSource.data" [value]="Brand.name">
-      {{ Brand.name }} <!-- Replace with the property you want to display -->
-    </mat-option>
-  </mat-select>
+<mat-label>Brand</mat-label>
+<mat-select [(value)]="selectedBrand">
+  <!-- Use *ngFor to iterate over categoryDataSource and populate options -->
+  <mat-option *ngFor="let Brand of brandDataSource.data" [value]="Brand.name">
+    {{ Brand.name }} <!-- Replace with the property you want to display -->
+  </mat-option>
+</mat-select>
 </mat-form-field>
 <mat-form-field appearance="fill">
-  <mat-label>Attribute</mat-label>
-  <mat-select [(value)]="selectedAttribute">
-    <!-- Use *ngFor to iterate over categoryDataSource and populate options -->
-    <mat-option *ngFor="let attribute of attributeDataSource.data" [value]="attribute.value">
-      {{ attribute.value }} <!-- Replace with the property you want to display -->
-    </mat-option>
-  </mat-select>
+<mat-label>Category</mat-label>
+<mat-select [(value)]="selectedCategory">
+  <!-- Use *ngFor to iterate over categoryDataSource and populate options -->
+  <mat-option *ngFor="let category of categoryDataSource.data" [value]="category.name">
+    {{ category.name }} <!-- Replace with the property you want to display -->
+  </mat-option>
+</mat-select>
 </mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Attribute Value</mat-label>
-  <input matInput #txtattributeValue>
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Category</mat-label>
-  <mat-select [(value)]="selectedCategory">
-    <!-- Use *ngFor to iterate over categoryDataSource and populate options -->
-    <mat-option *ngFor="let category of categoryDataSource.data" [value]="category.name">
-      {{ category.name }} <!-- Replace with the property you want to display -->
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<input matInput #txtAttribute value="{{selectedAttribute}}" style="display: none;">
 <input matInput #txtBrand value="{{selectedBrand}}" style="display: none;">
 <input matInput #txtCategory value="{{selectedCategory}}" style="display: none;">
-<button mat-raised-button color="primary" class="btn" (click)="create(txtName, txtStock, txtPrice, txtAttribute, txtattributeValue, txtBrand, txtCategory, txtDescription)">Ekle</button>
+<button mat-raised-button color="primary" class="btn example-button-container" (click)="create(txtName, txtStock, txtPrice, txtBrand, txtCategory, txtDescription)">Create Product</button>
 <!--<app-file-upload [options]="fileUploadOptions"></app-file-upload>-->

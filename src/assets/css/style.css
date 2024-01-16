@@ -6658,8 +6658,8 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .breadcrumb-wrap nav .breadcrumb .breadcrumb-item a {
-    color: #222222;
-    font-size: 14px;
+    color: #333;
+    font-size: 12px;
     font-weight: 700;
     line-height: 18px;
     text-transform: capitalize;

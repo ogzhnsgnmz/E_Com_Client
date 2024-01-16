@@ -2,7 +2,7 @@
   <mat-label>Brand</mat-label>
   <mat-select [(value)]="selectedAttribute">
     <mat-option *ngFor="let attribute of attributeDataSource.data" [value]="attribute.id">
-      {{ attribute.value }}
+      {{ attribute.name }}
     </mat-option>
   </mat-select>
 </mat-form-field>

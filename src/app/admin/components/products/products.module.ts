@@ -14,7 +14,7 @@ import { FileUploadModule } from 'src/app/services/common/file-upload/file-uploa
 import { DialogModule } from '@angular/cdk/dialog';
 import { CreateComponent } from './create/create.component';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
     DeleteDirectiveModule,
     FileUploadModule,
     DialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ]
 })
 export class ProductsModule { }

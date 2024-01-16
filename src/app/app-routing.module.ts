@@ -37,6 +37,8 @@ const routes: Routes = [
   {path:"", component : HomeComponent},
   {path:"checkout", loadChildren : () => import("./ui/components/checkout/checkout.module").then
   (module => module.CheckoutModule)},
+  {path:"preinformation", loadChildren : () => import("./ui/components/preinformation/preinformation.module").then
+  (module => module.PreinformationModule)},
   ,{
     path:"", component: uiLayoutComponent, children:[
   {path:"products", loadChildren : () => import("./ui/components/products/products.module").then
@@ -53,10 +55,10 @@ const routes: Routes = [
   (module => module.BasketsModule)},
   {path:"my-account", loadChildren : () => import("./ui/components/profile/profile.module").then
   (module => module.ProfileModule)},
-  {path:"about-us", loadChildren : () => import("./ui/components/about-us/about-us.module").then
-  (module => module.AboutUsModule)},
-  {path:"contact-us", loadChildren : () => import("./ui/components/contact-us/contact-us.module").then
-  (module => module.ContactUsModule)},
+  {path:"about", loadChildren : () => import("./ui/components/about/about.module").then
+  (module => module.AboutModule)},
+  {path:"contact", loadChildren : () => import("./ui/components/contact/contact.module").then
+  (module => module.ContactModule)},
   {path:"register", loadChildren : () => import("./ui/components/register/register.module").then
   (module => module.RegisterModule)},
   {path:"login", loadChildren : () => import("./ui/components/login/login.module").then
